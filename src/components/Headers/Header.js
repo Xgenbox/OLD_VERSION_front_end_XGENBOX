@@ -22,6 +22,7 @@ import { getUsersCounts } from "Redux/actions/Statistiques.action";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
+import StatisticCard from "./components/StatisticCard";
 
 
 
@@ -49,125 +50,11 @@ const allUser = userStatistiques?.total
           <div className="header-body">
             {/* Card stats */}
             <Row>
-              <Col lg="6" xl="4">
-                <Card className="card-stats mb-4 mb-xl-0">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h5"
-                          className="text-uppercase text-muted mb-0"
-                        >
-                          Bins count
-                        </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">
-                         {BinStatistiques?.totalCount}
-                        </span>
-                      </div>
-                      <Col className="col-auto">
-                        <div className="icon icon-shape bg-green text-white rounded-circle shadow">
-                          <i className="fas fa-trash" />
-                        </div>
-                      </Col>
-                    </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      {/* <span className="text-success mr-2">
-                        <i className="fa fa-arrow-up" /> 3.48%
-                      </span>{" "} */}
-                      <span className={`${BinStatistiques?.percentageIncrease >0 ? "text-success": "text-danger"} mr-2`}>
-                         {BinStatistiques?.percentageIncrease >0 ? <i className="fa fa-arrow-up" />:<i className="fas fa-arrow-down" />   }  {BinStatistiques?.percentageIncrease}%
-                      </span>{" "}
-                      <span className="text-nowrap">Since yesterday</span>
-                    </p>
-                  </CardBody>
-                </Card>
-              </Col>
-              <Col lg="6" xl="4">
-                <Card className="card-stats mb-4 mb-xl-0">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h5"
-                          className="text-uppercase text-muted mb-0"
-                        >
-                          Users Count
-                        </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{allUser?.totalCount}</span>
-                      </div>
-                      <Col className="col-auto">
-                        <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
-                          <i className="fas fa-users" />
-                        </div>
-                      </Col>
-                    </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className={`${allUser?.percentageIncrease >0 ? "text-success": "text-danger"} mr-2`}>
-                         {allUser?.percentageIncrease >0 ? <i className="fa fa-arrow-up" />:<i className="fas fa-arrow-down" />   }  {allUser?.percentageIncrease}%
-                      </span>{" "}
-                      <span className="text-nowrap">Since last yesterday</span>
-                    </p>
-                  </CardBody>
-                </Card>
-              </Col>
-              <Col lg="6" xl="4">
-                <Card className="card-stats mb-4 mb-xl-0">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h5"
-                          className="text-uppercase text-muted mb-0"
-                        >
-                          MUNICIPALs count
-                        </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{municipal[0]?.totalCount}</span>
-                      </div>
-                      <Col className="col-auto">
-                        <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                          <i className="fas fa-truck" />
-                        </div>
-                      </Col>
-                    </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      {/* <span className="text-warning mr-2"> */}
-                      <span className={`${municipal[0]?.percentageIncrease >0 ? "text-success": "text-danger"} mr-2`}>
-                         {municipal[0]?.percentageIncrease >0 ? <i className="fa fa-arrow-up" />:<i className="fas fa-arrow-down" />   }  {municipal[0]?.percentageIncrease}%
-                        {/* <i className="fas fa-arrow-down" /> {municipal[0]?.percentageIncrease}% */}
-                      </span>{" "}
-                      <span className="text-nowrap">Since yesterday</span>
-                    </p>
-                  </CardBody>
-                </Card>
-              </Col>
-              {/* <Col lg="6" xl="3">
-                <Card className="card-stats mb-4 mb-xl-0">
-                  <CardBody>
-                    <Row>
-                      <div className="col">
-                        <CardTitle
-                          tag="h5"
-                          className="text-uppercase text-muted mb-0"
-                        >
-                          Performance
-                        </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">49,65%</span>
-                      </div>
-                      <Col className="col-auto">
-                        <div className="icon icon-shape bg-info text-white rounded-circle shadow">
-                          <i className="fas fa-percent" />
-                        </div>
-                      </Col>
-                    </Row>
-                    <p className="mt-3 mb-0 text-muted text-sm">
-                      <span className="text-success mr-2">
-                        <i className="fas fa-arrow-up" /> 12%
-                      </span>{" "}
-                      <span className="text-nowrap">Since last month</span>
-                    </p>
-                  </CardBody>
-                </Card>
-              </Col> */}
+            <StatisticCard key={1} icon={"fas fa-trash"} title="Bins count" iconClass="bg-warning" value={BinStatistiques?.totalCount} percentageIncrease={BinStatistiques?.percentageIncrease} />
+            <StatisticCard key={2} icon={"fas fa-users"} title="Users Count" iconClass="bg-yellow" value={allUser?.totalCount} percentageIncrease={allUser?.percentageIncrease} />
+            <StatisticCard key={2} icon={"fas fa-truck"} title="MUNICIPALs count" iconClass="bg-info" value={municipal[0]?.totalCount} percentageIncrease={municipal[0]?.percentageIncrease} />
+
+
             </Row>
           </div>
         </Container>

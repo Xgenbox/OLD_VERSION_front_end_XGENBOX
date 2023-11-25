@@ -31,25 +31,26 @@ import { setCurrentUser } from "Redux/actions/authActions.js";
 import UserDetails from "components/UserDetails.js";
 
 //theme
-import "primereact/resources/themes/lara-light-indigo/theme.css";     
-    
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+
 //core
-import "primereact/resources/primereact.min.css";  
+import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css'
-// import 'primeflex/primeflex.css';  
+import axios from "axios";
+// import 'primeflex/primeflex.css';
 function App() {
   // const user= {
   //   isConnected:false,
   //   role:"ADMIN"
   // }
 
-  
+
   const user = useSelector(state=>state.auth)
   const profile = useSelector(state=>state?.profile?.profile)
   const dispatch = useDispatch()
   useEffect(() => {
     const value = localStorage.getItem('jwtToken')
-    
+
         if (value) {
           const decode = jwt_decode(value);
           // console.log("ligne 107:******************************************",value)
@@ -60,7 +61,7 @@ function App() {
           // dispatch(GetRequest());
           SetAuthToken(value); // Corrected typo here
         }
-     
+
 
     const activeExpires = new Date(user?.user?.iat);
     const currentDate = new Date();
@@ -75,26 +76,63 @@ function App() {
 
   useEffect(() => {
     dispatch(GetProfile())
-    
+
   }, [profile])
-  
-  
-      
+
+  useEffect(() => {
+    const jwtToken = localStorage.getItem('jwtToken');
+
+    if (jwtToken) {
+      try {
+        const decodedToken = jwt_decode(jwtToken);
+        const activeExpires = new Date(decodedToken.exp * 1000); // Convert seconds to milliseconds
+        const currentDate = new Date();
+
+        if (currentDate > activeExpires) {
+          // Token has expired
+          localStorage.removeItem('jwtToken');
+          dispatch(LogOut());
+          dispatch(setCurrentUser({}));
+        } else {
+          // Token is still valid, check with the server
+          axios.get(`${process.env.REACT_APP_API_URL}/api/users/checkTokenValidity`) // Replace with your backend endpoint
+            .then(response => {
+              // Request was successful, token is valid
+              // console.log('Token is valid');
+            })
+            .catch(error => {
+              // Request failed, likely due to invalid token
+              // console.error('Token validation failed:', error);
+              localStorage.removeItem('jwtToken');
+              dispatch(setCurrentUser({}));
+              dispatch(LogOut());
+            });
+        }
+      } catch (error) {
+        // Token decoding failed
+        // console.error('Token decoding failed:', error);
+        localStorage.removeItem('jwtToken');
+        dispatch(setCurrentUser({}));
+        dispatch(LogOut());
+      }
+    }
+  }, [dispatch,user]);
+
 
   return (
     <BrowserRouter>
     {/* <DemoNavbar/> */}
     <Switch>
-           <Route  path="/admin"   render={(props) => 
+           <Route  path="/admin"   render={(props) =>
            <PrivateRouter user={user}>
             <AdminLayout {...props} />
-            
-           
+
+
 
            </PrivateRouter>
           } />
-          
-          
+
+
            <Route path="/" exact render={(props) => <Landing {...props} />} />
            <Route path="/landing-page" exact render={(props) => <Landing {...props} />}/>
            <Route path="/smart-box" exact render={(props) => <SmartBox {...props} />}/>
@@ -102,7 +140,7 @@ function App() {
            <Route path="/quote-request" exact render={(props) => <QuoteRequest {...props} />}/>
            <Route path="/smart-cities" exact render={(props) => <SmartCities {...props} />}/>
            <Route path="/commercial-establishments" exact render={(props) => <CommercialEstablishment {...props} />}/>
-           <Route path="/login" render={(props) => 
+           <Route path="/login" render={(props) =>
            <ForceRedirect user={user}>
            {/* <Login /> */}
            <Login {...props} />
