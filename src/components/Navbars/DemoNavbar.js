@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
@@ -38,43 +38,50 @@ import {
   Col,
   UncontrolledTooltip
 } from "reactstrap";
+import { useSelector } from "react-redux";
 
 
-class DemoNavbar extends React.Component {
-  componentDidMount() {
+const DemoNavbar = () => {
+  const user = useSelector((state) => state.auth);
+  console.log( user)
+
+  // State for your collapse functionality
+  const [collapseClasses, setCollapseClasses] = useState("");
+  const [collapseOpen, setCollapseOpen] = useState(false);
+
+  const onExiting = () => {
+    setCollapseClasses("collapsing-out");
+  };
+
+  const onExited = () => {
+    setCollapseClasses("");
+  };
+
+  useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
-    // initialise
     headroom.init();
-  }
-  state = {
-    collapseClasses: "",
-    collapseOpen: false
-  };
+  }, []);
 
-  onExiting = () => {
-    this.setState({
-      collapseClasses: "collapsing-out"
-    });
-  };
-
-  onExited = () => {
-    this.setState({
-      collapseClasses: ""
-    });
-  };
-
-  render() {
-    return (
+  return (
       <>
         <header className="header-global ">
           <Navbar
-            className="navbar-main navbar-transparent navbar-light headroom"
+            className="navbar-main navbar-transparent navbar-light headroom mb-10"
             expand="lg"
             id="navbar-main"
+            style={{
+        backdropFilter: 'blur(3px)', // Adjust the blur intensity as needed
+        backgroundColor: 'rgba(255, 255, 255, 0.5)', // Adjust the background color and opacity as needed
+
+
+      }}
 
           >
 
-            <Container>
+            <Container
+
+
+            >
               <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
                 <img
                   alt="..."
@@ -92,9 +99,9 @@ class DemoNavbar extends React.Component {
               <UncontrolledCollapse
                 toggler="#navbar_global"
                 navbar
-                className={this.state.collapseClasses}
-                onExiting={this.onExiting}
-                onExited={this.onExited}
+                className={collapseClasses}
+                onExiting={onExiting}
+                onExited={onExited}
               >
                 <div className="navbar-collapse-header">
                   <Row>
@@ -141,7 +148,7 @@ class DemoNavbar extends React.Component {
                   {/* Products */}
                   <UncontrolledDropdown nav>
                     <DropdownToggle nav>
-                      <i className="ni ni-collection d-lg-none mr-1" />
+                      <i className="ni ni-collection d-lg-none mr-1  " />
                       <span className="nav-link-inner--text ">Products</span>
 
                     </DropdownToggle>
@@ -192,9 +199,9 @@ class DemoNavbar extends React.Component {
                       <DropdownItem to="/partnership-opportunities" tag={Link}>
                         Partnership opportunities
                       </DropdownItem>
-                      <DropdownItem to="/admin" tag={Link}>
+                      {/* <DropdownItem to="/admin" tag={Link}>
                         Admin
-                      </DropdownItem>
+                      </DropdownItem> */}
                     </DropdownMenu>
                   </UncontrolledDropdown>
 
@@ -217,9 +224,127 @@ class DemoNavbar extends React.Component {
 
                     </DropdownMenu>
                   </UncontrolledDropdown>
+
+                    {/* Login */}
+
+{
+                  !user?.isConnected && (
+                    <>
+
+                    <NavItem>
+                    <NavLink
+                      className="nav-link-icon"
+                      // href="/login"
+                      id="tooltip3335890747"
+                      // target="_blank"
+                      to="/login"
+                      tag={Link}
+
+                    >
+<i className="ni ni-key-25" />
+                      <span className="nav-link-inner--text d-lg-none">
+                        Login
+                      </span>
+                    </NavLink>
+                    <UncontrolledTooltip delay={0} target="tooltip3335890747">
+                      Login
+                    </UncontrolledTooltip>
+                  </NavItem>
+
+
+                  <NavItem>
+                    <NavLink
+                      className="nav-link-icon"
+                      // href="/register-page"
+                      // to={
+                      //   "/register-page"
+                      // }
+                      to="/register-page"
+                      tag={Link}
+
+                      id="tooltip333589075"
+                      // target="_blank"
+                    >
+<i className="ni ni-circle-08" />
+                      <span className="nav-link-inner--text d-lg-none">
+                        Register
+                      </span>
+                    </NavLink>
+                    <UncontrolledTooltip delay={0} target="tooltip333589075">
+                      Register
+                    </UncontrolledTooltip>
+                  </NavItem>
+                    </>
+                  )
+}
+
                 </Nav>
 
                 </Nav>
+                {
+                  user?.isConnected && (
+                    <>
+                    <Nav className="align-items-lg-center ml-lg-auto" navbar>
+                    <NavItem>
+                      <NavLink
+                        className="nav-link-icon"
+                        // href="/admin"
+                        to="/admin"
+                        tag={Link}
+                        id="tooltip3335890744"
+                        // target="_blank"
+                      >
+                      <i className="ni ni-circle-08" />
+                        <span className="nav-link-inner--text d-lg-none">
+                          Admin
+                        </span>
+                      </NavLink>
+                      <UncontrolledTooltip delay={0} target="tooltip3335890744">
+                        Admin
+                      </UncontrolledTooltip>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink
+                        className="nav-link-icon"
+                        // href="/admin"
+                        to="/profile-page"
+                        tag={Link}
+                        id="tooltip333589074"
+                        // target="_blank"
+                      >
+                      <i className="ni ni-circle-08" />
+                        <span className="nav-link-inner--text d-lg-none">
+                          Profile
+                        </span>
+                      </NavLink>
+                      <UncontrolledTooltip delay={0} target="tooltip333589074">
+                        Profile
+                      </UncontrolledTooltip>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink
+                        className="nav-link-icon"
+                        // href="/admin"
+                        to="/"
+                        tag={Link}
+                        id="tooltip333589074"
+                        // target="_blank"
+                      >
+                      <i className="ni ni-circle-08" />
+                        <span className="nav-link-inner--text d-lg-none">
+                          Logout
+                        </span>
+                      </NavLink>
+                      <UncontrolledTooltip delay={0} target="tooltip333589074">
+                        Logout
+                      </UncontrolledTooltip>
+                    </NavItem>
+                  </Nav>
+                    </>
+                  )
+
+                }
+
               </UncontrolledCollapse>
             </Container>
           </Navbar>
@@ -227,6 +352,6 @@ class DemoNavbar extends React.Component {
       </>
     );
   }
-}
+
 
 export default DemoNavbar;

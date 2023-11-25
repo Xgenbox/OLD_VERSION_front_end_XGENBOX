@@ -37,6 +37,8 @@ import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import 'primeicons/primeicons.css'
 import axios from "axios";
+import ForgotPassword from "views/examples/ForgotPassword.js";
+import SignUpChoice from "views/examples/SignUpChoice.js";
 // import 'primeflex/primeflex.css';
 function App() {
   // const user= {
@@ -155,6 +157,8 @@ function App() {
            {/* <Route path="/login-page" exact render={(props) => <Login {...props} />}/> */}
            <Route path="/profile-page" exact render={(props) => <Profile {...props} />}/>
            <Route path="/register-page" exact render={(props) => <Register {...props} />}/>
+           <Route path="/forgotpassword-page" exact render={(props) => <ForgotPassword {...props} />}/>
+           <Route path="/signupChoice-page" exact render={(props) => <SignUpChoice {...props} />}/>
            <ForceRedirect user={user}>
            {/* <Login /> */}
            <NoAccess  />

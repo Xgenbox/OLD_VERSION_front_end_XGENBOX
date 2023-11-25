@@ -138,12 +138,16 @@ class Landing extends React.Component {
             {/* 1st Hero Variation */}
           </div>
           <section className="section section-lg pt-lg-0 mt--200">
-            <Container>
+            <Container
+
+            >
               <Row className="justify-content-center">
                 <Col lg="12">
                   <Row className="row-grid">
                     <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
+                      <Card className="card-lift--hover shadow border-0 "
+                      style={{backgroundColor: "#f8f7fe"}}
+                      >
                         <CardBody className="py-5">
                           <div className="icon icon-shape icon-shape-primary rounded-circle mb-4">
                             <i className="ni ni-check-bold" />
@@ -167,7 +171,9 @@ class Landing extends React.Component {
                       </Card>
                     </Col>
                     <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
+                      <Card className="card-lift--hover shadow border-0"
+                        style={{backgroundColor: "#f8f7fe"}}
+                      >
                         <CardBody className="py-5">
                           <div className="icon icon-shape icon-shape-success rounded-circle mb-4">
                             <i className="ni ni-istanbul" />
@@ -191,7 +197,9 @@ class Landing extends React.Component {
                       </Card>
                     </Col>
                     <Col lg="4">
-                      <Card className="card-lift--hover shadow border-0">
+                      <Card className="card-lift--hover shadow border-0"
+                        style={{backgroundColor: "#f8f7fe"}}
+                      >
                         <CardBody className="py-5">
                           <div className="icon icon-shape icon-shape-warning rounded-circle mb-4">
                             <i className="ni ni-planet" />
@@ -219,9 +227,16 @@ class Landing extends React.Component {
               </Row>
             </Container>
           </section>
-          <section className="section section-lg">
-            <Container>
-              <Row className="justify-content-center text-center mb-lg">
+          <section className="section section-lg"
+            style={{backgroundColor: "#f8f7fe"}}
+          >
+            <Container
+              // className="justify-content-center text-center mb-lg"
+
+            >
+              <Row className="justify-content-center text-center mb-lg"
+
+              >
                 <Col className="mb-5 mb-lg-0" lg="6">
                   <h1 className="display-3">
                     Do you have a waste problem ?{" "}
