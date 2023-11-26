@@ -114,7 +114,7 @@ function SignUpChoice () {
                         <Button
                           className="btn-neutral btn-icon ml-1"
                           color="default"
-                          href="#pablo"
+                          // href="#pablo"
                           onClick={(e) => {
                             e.preventDefault()
                             history.push("/register-page")
@@ -133,8 +133,11 @@ function SignUpChoice () {
                         <Button
                           className="btn-neutral btn-icon ml-1"
                           color="default"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          // href="#pablo"
+                          onClick={(e) => {
+                            history.push("/signup-Collector-page")
+                          }}
+
 
                         >
 
@@ -149,15 +152,13 @@ function SignUpChoice () {
                       >
 
 
-<Link
-    // className="text-light"
-    to="/login"
->
+
 <Button
   className="btn-neutral btn-icon ml-1"
   color="default"
-  href="#pablo"
+  // href="#pablo"
   onClick={()=>{
+    history.push("/signup-company-page")
 
   }
   }
@@ -167,7 +168,7 @@ function SignUpChoice () {
 
   <span className="btn-inner--text">Company</span>
 </Button>
-</Link>
+
 </div>
                     </CardHeader>
                     <CardBody className="px-lg-5 py-lg-5">

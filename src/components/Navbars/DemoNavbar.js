@@ -296,49 +296,14 @@ const DemoNavbar = () => {
                       >
                       <i className="ni ni-circle-08" />
                         <span className="nav-link-inner--text d-lg-none">
-                          Admin
+                          Dashboard
                         </span>
                       </NavLink>
                       <UncontrolledTooltip delay={0} target="tooltip3335890744">
-                        Admin
+                      Dashboard
                       </UncontrolledTooltip>
                     </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className="nav-link-icon"
-                        // href="/admin"
-                        to="/profile-page"
-                        tag={Link}
-                        id="tooltip333589074"
-                        // target="_blank"
-                      >
-                      <i className="ni ni-circle-08" />
-                        <span className="nav-link-inner--text d-lg-none">
-                          Profile
-                        </span>
-                      </NavLink>
-                      <UncontrolledTooltip delay={0} target="tooltip333589074">
-                        Profile
-                      </UncontrolledTooltip>
-                    </NavItem>
-                    <NavItem>
-                      <NavLink
-                        className="nav-link-icon"
-                        // href="/admin"
-                        to="/"
-                        tag={Link}
-                        id="tooltip333589074"
-                        // target="_blank"
-                      >
-                      <i className="ni ni-circle-08" />
-                        <span className="nav-link-inner--text d-lg-none">
-                          Logout
-                        </span>
-                      </NavLink>
-                      <UncontrolledTooltip delay={0} target="tooltip333589074">
-                        Logout
-                      </UncontrolledTooltip>
-                    </NavItem>
+
                   </Nav>
                     </>
                   )

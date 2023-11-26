@@ -39,6 +39,8 @@ import 'primeicons/primeicons.css'
 import axios from "axios";
 import ForgotPassword from "views/examples/ForgotPassword.js";
 import SignUpChoice from "views/examples/SignUpChoice.js";
+import CollectorSignUp from "views/examples/CollectorSignUp.js";
+import CompanySignUp from "views/examples/CompanySignUp.js";
 // import 'primeflex/primeflex.css';
 function App() {
   // const user= {
@@ -159,6 +161,8 @@ function App() {
            <Route path="/register-page" exact render={(props) => <Register {...props} />}/>
            <Route path="/forgotpassword-page" exact render={(props) => <ForgotPassword {...props} />}/>
            <Route path="/signupChoice-page" exact render={(props) => <SignUpChoice {...props} />}/>
+           <Route path="/signup-Collector-page" exact render={(props) => <CollectorSignUp {...props} />}/>
+           <Route path="/signup-company-page" exact render={(props) => <CompanySignUp {...props} />}/>
            <ForceRedirect user={user}>
            {/* <Login /> */}
            <NoAccess  />

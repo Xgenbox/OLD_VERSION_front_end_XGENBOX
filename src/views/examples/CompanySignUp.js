@@ -15,7 +15,7 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // reactstrap components
 import {
@@ -44,34 +44,82 @@ import { loginUser } from "Redux/actions/authActions";
 import AppLoader from "assets/Animations/AppLoader";
 import { registerUser } from "Redux/actions/authActions";
 import { useHistory } from 'react-router-dom';
+import { ToastContainer, toast } from "react-toastify";
+import { registerCollectorUser } from "Redux/actions/authActions";
+import { registerEntrepriseUser } from "Redux/actions/authActions";
 
 const initialValues = {
   email: '',
    password: '',
-    name:''
+   firstName:'',
+    lastName:'',
+    typeCompany:"Organization or association",
+    companyName:"",
+    role:"ENTREPRISE",
+    phone:"",
+    typeCompany1:""
+
+
    }
 
    const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string().required('Password is required'),
-    name: Yup.string().required('Name is required'),
+    firstName: Yup.string().required('First Name is required'),
+    lastName: Yup.string().required('Last Name is required'),
+    // entityType: Yup.string().required('Entity Type is required'),
+    companyName: Yup.string().required('Company Name is required'),
+    phone: Yup.string().required('Phone is required'),
+
+
+
   });
-const  Register =() =>{
+const  CompanySignUp =() =>{
   const [submitted, setSubmitted] = useState(false);
   const dispatch = useDispatch()
   const isLoad = useSelector(state=>state?.isLoading?.isLoading)
   const errors1 = useSelector(state=>state?.error?.errors)
   const [passwordVisible, setPasswordVisible] = useState(false);
   const history = useHistory()
+  const isSuccess = useSelector(state=>state?.success?.success)
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
+  const showToastMessage = () => {
+    toast.success('Collector  Created successfully.', {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+    });
+
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+
+      showToastMessage()
+    }
+  }, [isSuccess])
   const handleSubmit = (values) => {
     // Perform any actions (e.g., API calls) here
-    console.log(values);
     // Access form values using "values" object
-    dispatch(registerUser(values, history))
+    if(values.typeCompany =="Other" && values?.typeCompany1 =="" ){
+        toast.error('Type of company is required.', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000,
+        });
+        return false;
+
+
+    }
+    if(values.typeCompany =="Other" && values?.typeCompany1 !=""){
+        values.typeCompany = values.typeCompany1
+
+    }
+    delete values.typeCompany1;
+    console.log(values);
+    dispatch(registerEntrepriseUser(values, history))
     setSubmitted(true); // Set the submitted state to true
   };
   // console.log(errors && errors)
@@ -84,6 +132,7 @@ const  Register =() =>{
     return (
       <>
         <DemoNavbar />
+        <ToastContainer />
         <main >
           <section className="section section-shaped section-lg">
             <div className="shape shape-style-1 bg-gradient-default">
@@ -112,9 +161,39 @@ const  Register =() =>{
   validationSchema={validationSchema}
   onSubmit={handleSubmit}
 >
-  {({ errors, touched }) => (
+  {({ errors, touched,
+values
+   }) => (
     <Form role="form">
     <FormGroup className={`mb-3   ${
+              touched.firstName && errors.firstName ? 'has-danger' : ''
+            }`}>
+        <InputGroup className="input-group-alternative">
+          <InputGroupAddon addonType="prepend">
+            <InputGroupText>
+              <i className="ni ni-hat-3" />
+            </InputGroupText>
+          </InputGroupAddon>
+          <Field
+            name="firstName"
+            placeholder="First Name"
+            type="text"
+            className={`form-control ${
+              touched.firstName && errors.firstName ? 'is-invalid' : ''
+            }`}
+            // className={`form-control ${errors && errors.email ? 'is-invalid' : ''}`}
+          />
+          <ErrorMessage
+            name="firstName"
+            component="div"
+            className="invalid-feedback"
+
+          />
+
+
+        </InputGroup>
+      </FormGroup>
+      <FormGroup className={`mb-3   ${
               touched.email && errors.email ? 'has-danger' : ''
             }`}>
         <InputGroup className="input-group-alternative">
@@ -124,16 +203,111 @@ const  Register =() =>{
             </InputGroupText>
           </InputGroupAddon>
           <Field
-            name="name"
-            placeholder="Name"
+            name="lastName"
+            placeholder="last Name"
             type="text"
             className={`form-control ${
-              touched.name && errors.name ? 'is-invalid' : ''
+              touched.lastName && errors.lastName ? 'is-invalid' : ''
             }`}
             // className={`form-control ${errors && errors.email ? 'is-invalid' : ''}`}
           />
           <ErrorMessage
-            name="name"
+            name="lastName"
+            component="div"
+            className="invalid-feedback"
+
+          />
+
+
+        </InputGroup>
+      </FormGroup>
+      <FormGroup className={`mb-3 ${touched.entityType && errors.entityType ? 'has-danger' : ''}`}>
+        <InputGroup className="input-group-alternative">
+          <InputGroupAddon addonType="prepend">
+            <InputGroupText>
+              <i className="ni ni-hat-3" />
+            </InputGroupText>
+          </InputGroupAddon>
+
+          {/* Dropdown for entity type */}
+          <Field
+            as="select"
+            name="typeCompany"
+            className={`form-control ${touched.typeCompany && errors.typeCompany ? 'is-invalid' : ''}`}
+            // onChange={handleChange}
+            // onBlur={handleBlur}
+          >
+            <option value="Organization or association">Organization or association</option>
+            <option value="company">Company</option>
+            <option value="Municipality">Municipality</option>
+            <option value="Event organizer">Event organizer</option>
+            <option value="Advertising agency">Advertising agency</option>
+            <option value="Other">Other</option>
+          </Field>
+
+          <ErrorMessage name="typeCompany" component="div" className="invalid-feedback" />
+        </InputGroup>
+      </FormGroup>
+      {values.typeCompany === 'Other' && (
+        <FormGroup className={`mb-3 ${touched.typeCompany1 && errors.typeCompany1 ? 'has-danger' : ''}`}>
+          <InputGroup className="input-group-alternative">
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <i className="ni ni-building" />
+              </InputGroupText>
+            </InputGroupAddon>
+
+            <Field
+              name="typeCompany1"
+              placeholder="Company Type"
+              type="text"
+              className={`form-control ${touched.typeCompany1 && errors.typeCompany1 ? 'is-invalid' : ''}`}
+            />
+            <ErrorMessage name="typeCompany1" component="div" className="invalid-feedback" />
+          </InputGroup>
+        </FormGroup>
+      )}
+
+        <FormGroup className={`mb-3 ${touched.companyName && errors.companyName ? 'has-danger' : ''}`}>
+          <InputGroup className="input-group-alternative">
+            <InputGroupAddon addonType="prepend">
+              <InputGroupText>
+                <i className="ni ni-building" />
+              </InputGroupText>
+            </InputGroupAddon>
+
+            <Field
+              name="companyName"
+              placeholder="Company Name"
+              type="text"
+              className={`form-control ${touched.companyName && errors.companyName ? 'is-invalid' : ''}`}
+            />
+            <ErrorMessage name="companyName" component="div" className="invalid-feedback" />
+          </InputGroup>
+        </FormGroup>
+
+
+
+      <FormGroup className={`mb-3   ${
+              touched.phone && errors.phone ? 'has-danger' : ''
+            }`}>
+        <InputGroup className="input-group-alternative">
+          <InputGroupAddon addonType="prepend">
+            <InputGroupText>
+              <i className="ni ni-phone-83" />
+            </InputGroupText>
+          </InputGroupAddon>
+          <Field
+            name="phone"
+            placeholder="phone"
+            type="phone"
+            className={`form-control ${
+              touched.phone && errors.phone ? 'is-invalid' : ''
+            }`}
+            // className={`form-control ${errors && errors.phone ? 'is-invalid' : ''}`}
+          />
+          <ErrorMessage
+            name="phone"
             component="div"
             className="invalid-feedback"
 
@@ -232,6 +406,12 @@ const  Register =() =>{
                   <span style={{color:"red"}}> {errors1 && errors1.password} </span>
             </>
                   ) : null}
+                  {touched.phone && errors.phone || errors1&& errors1.phone ? (
+            <>
+            <br/>
+                  <span style={{color:"red"}}> {errors1 && errors1.phone} </span>
+            </>
+                  ) : null}
         {/* </label> */}
       </div>
       <div className="text-center">
@@ -278,4 +458,4 @@ const  Register =() =>{
   }
 
 
-export default Register;
+export default CompanySignUp;
