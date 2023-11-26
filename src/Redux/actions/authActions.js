@@ -584,6 +584,74 @@ export const AddEntreprise =  (userData, navigation ) => (dispatch) => {
         )
 }
 
+export const forgotPassword = (email)=>dispatch=> {
+    // console.log("-------------------------------------",email)
+    dispatch({
+        type: SET_ERRORS,
+        payload: {}
+    })
+    dispatch({
+        type:SET_IS_LOADING,
+        payload:true
+    })
+    dispatch({
+        type:SET_IS_SECCESS,
+        payload:false
+    })
+    axios.post(`${process.env.REACT_APP_API_URL}/api/users/forgot-password`, {email})
+    .then(async(res) => {
+        dispatch({
+            type:SET_IS_LOADING,
+            payload:false
+        })
+        dispatch({
+            type:SET_IS_SECCESS,
+            payload:true
+        })
+        setInterval(() => {
+            dispatch({
+                type:SET_IS_SECCESS,
+                payload:false
+            })
+
+        }, 3000);
+        setTimeout(() => {
+
+            dispatch({
+                type:SET_IS_LOADING,
+                payload:false
+            })
+            dispatch(setLoading(false));
+
+
+            dispatch(setLoading(true));
+        }, 1000);
+        })
+        .catch(async (err) => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err?.response?.data
+              })
+
+              dispatch({
+                  type: SET_ERRORS,
+                  payload: err?.response?.data
+                })
+
+                dispatch({
+                  type:SET_IS_LOADING,
+                  payload:false
+              })
+              setTimeout(() => {
+
+                  dispatch({
+                      type:SET_IS_SECCESS,
+                      payload:false
+                  })
+              }, 3000);
+              }
+              )
+}
 
 
 
