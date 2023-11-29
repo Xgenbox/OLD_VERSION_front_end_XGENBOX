@@ -45,6 +45,7 @@ import MunicipalDetails from "components/MunicipalDetails";
 
 
 var routes = [
+  // ADmin routes
   {
     path: "/index",
     name: "Dashboard",
@@ -234,7 +235,37 @@ var routes = [
     component: RequestsMunicpal,
     layout: "/admin"
   },
-  
+// ----------------------------------------------------------------------------------------------------------------
+  // Citizen Routes
+  {
+    path: "/index",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: ListOfBins,
+    layout: "/citizen"
+  },
+
+
+  // ----------------------------------------------------------------------------------------------------------------
+  // Company Routes
+  {
+    path: "/index",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: ListOfBins,
+    layout: "/company"
+  },
+
+  // ----------------------------------------------------------------------------------------------------------------
+  // Collector Routes
+  {
+    path: "/index",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: ListOfBins,
+    layout: "/collector"
+  },
+
 
   // {
   //   path: "/user-profile",

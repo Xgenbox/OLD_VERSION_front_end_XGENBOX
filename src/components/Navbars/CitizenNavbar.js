@@ -59,7 +59,9 @@ const CitizenNavbar = (props) => {
                     <img
                       alt="..."
                       src={
-                        profile?.avatar
+                        profile?.avatar ?
+                        profile?.avatar :
+                        require("assets/img/theme/team-4-800x800.jpg")
                       }
                     />
                   </span>

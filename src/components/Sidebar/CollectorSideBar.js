@@ -78,7 +78,7 @@ const CollectorSideBar = (props) => {
   // creates the links that appear in the left menu / CollectorSideBar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
-      if (prop.layout === "/admin" && prop.path !== "/user-details/:id" && prop.path !=='/partner-details/:id' && prop.path !=='/quote-details/:id'  && prop.path !=='/tech-assist-detail/:id' && prop.path !=='/contact-detail/:id' && prop.path !=='/AddBin' && prop.path !=='/Add-Point-Bin' && prop.path !=='/bin-details/:id' && prop.path !=='/quote-details/:id'  && prop.path !=='/tech-assist-detail/:id' && prop.path !=='/contact-detail/:id' && prop.path !=='/AddBin' && prop.path !=='/Add-Point-Bin' && prop.path !=='/edit-bin/:id' && prop.path !=='/point-bin-details/:id' && prop.path !=='/edit-Point-bin/:id' && prop.path !=='/user-profile' && prop.path !=='/municipal-details/:id'&& prop.path !=='/Add-Point-Bin/:idQuote') {
+      if (prop.layout === "/collector" && prop.path !== "/user-details/:id" && prop.path !=='/partner-details/:id' && prop.path !=='/quote-details/:id'  && prop.path !=='/tech-assist-detail/:id' && prop.path !=='/contact-detail/:id' && prop.path !=='/AddBin' && prop.path !=='/Add-Point-Bin' && prop.path !=='/bin-details/:id' && prop.path !=='/quote-details/:id'  && prop.path !=='/tech-assist-detail/:id' && prop.path !=='/contact-detail/:id' && prop.path !=='/AddBin' && prop.path !=='/Add-Point-Bin' && prop.path !=='/edit-bin/:id' && prop.path !=='/point-bin-details/:id' && prop.path !=='/edit-Point-bin/:id' && prop.path !=='/user-profile' && prop.path !=='/municipal-details/:id'&& prop.path !=='/Add-Point-Bin/:idQuote') {
         return (
           <NavItem key={key}>
             <NavLink
