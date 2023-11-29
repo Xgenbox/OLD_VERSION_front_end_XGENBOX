@@ -17,6 +17,9 @@ import Partnership from "components/Company/Partnership";
 import ContactDetail from "components/contact/ContactDetail";
 import TechnicalAssistance from "components/contact/TechnicalAssistance";
 import AdminLayout from "./layouts/Admin.js";
+import CitizenLayout from "./layouts/Citizen.js";
+import CollectorLayout from "./layouts/Collector.js";
+import CompanyLayout from "./layouts/Company.js";
 import PrivateRouter from "components/PrivateRouter.js";
 import ForceRedirect from "components/ForceRedirect.js";
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
@@ -135,6 +138,29 @@ function App() {
 
            </PrivateRouter>
           } />
+
+<Route  path="/citizen"   render={(props) =>
+           <PrivateRouter user={user}>
+            <CitizenLayout {...props} />
+           {/* <Route path="/profile-page" exact render={(props) => <Profile {...props} />}/> */}
+
+           </PrivateRouter>
+          } />
+          <Route  path="/collector"   render={(props) =>
+           <PrivateRouter user={user}>
+            <CollectorLayout {...props} />
+           {/* <Route path="/profile-page" exact render={(props) => <Profile {...props} />}/> */}
+
+           </PrivateRouter>
+          } />
+          <Route  path="/company"   render={(props) =>
+           <PrivateRouter user={user}>
+            <CompanyLayout {...props} />
+           {/* <Route path="/profile-page" exact render={(props) => <Profile {...props} />}/> */}
+
+           </PrivateRouter>
+          } />
+
 
 
            <Route path="/" exact render={(props) => <Landing {...props} />} />
