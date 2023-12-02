@@ -52,7 +52,7 @@ const allUser = userStatistiques?.total
             <Row>
             <StatisticCard key={1} icon={"fas fa-trash"} title="Bins count" iconClass="bg-warning" value={BinStatistiques?.totalCount} percentageIncrease={BinStatistiques?.percentageIncrease} />
             <StatisticCard key={2} icon={"fas fa-users"} title="Users Count" iconClass="bg-yellow" value={allUser?.totalCount} percentageIncrease={allUser?.percentageIncrease} />
-            <StatisticCard key={2} icon={"fas fa-truck"} title="MUNICIPALs count" iconClass="bg-info" value={municipal[0]?.totalCount} percentageIncrease={municipal[0]?.percentageIncrease} />
+            <StatisticCard key={3} icon={"fas fa-truck"} title="MUNICIPALs count" iconClass="bg-info" value={municipal[0]?.totalCount} percentageIncrease={municipal[0]?.percentageIncrease} />
 
 
             </Row>

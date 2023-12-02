@@ -42,6 +42,7 @@ import EditBin from "components/EditBin";
 import PointBinDetails from "components/PointBinDetails";
 import EditPointBin from "components/EditPointBins";
 import MunicipalDetails from "components/MunicipalDetails";
+import MapsComponent from "components/MapsComponent";
 
 
 var routes = [
@@ -50,7 +51,7 @@ var routes = [
     path: "/index",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
-    component: ListOfBins,
+    component: MapsComponent,
     layout: "/admin"
   },
   {
