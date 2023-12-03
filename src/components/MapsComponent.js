@@ -15,6 +15,8 @@ import {
 } from "reactstrap";
 import Header from './Headers/Header';
 import {Link} from "react-router-dom"
+import { CircularProgressbar,buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -28,13 +30,36 @@ function MapsComponent() {
   const [currentLocation, setCurrentLocation] = useState(null);
     const position = [51.505, -0.09];
     const AllUsers = useSelector(state => state?.users?.users?.users);
+     // ---------------------------------------------------------All Bins
+     const bins = useSelector(state=>state?.fetchBins?.fetchBins) || []
+     const municipal = useSelector(state=>state?.request?.request?.municipal) || []
+     const BinByMunicipal = useSelector(state=>state?.fetchBinByMunicipal?.BinListByMunicipal) || []
+     // console.log("bins--------------------", bins)
+     // console.log("BinByMunicipal--------------------", BinByMunicipal)
+     useEffect(() => {
+       dispatch(fetchPointBinAll())
+
+     }, [bins])
+     useEffect(() => {
+       dispatch(fetchPointBinAll())
+     }, [BinByMunicipal])
+     const pointBinsFull = bins && bins&& bins?.length > 0? bins?.filter((bin) => {
+       return bin.bins.some((b) => parseFloat(b.niv) >= 80);
+     }) : [];
+     // console.log(bins)
+     const BinByMunicipalFull = BinByMunicipal && BinByMunicipal.bins&& BinByMunicipal.bins.length > 0? BinByMunicipal?.bins?.filter((bin) => parseFloat(bin.niv) >= 80): [];
+
+
+     const AllFull = [...BinByMunicipalFull, ...pointBinsFull];
+     // console.log("AllFull--------------------", AllFull)
+     // ---------------------------------------------------------All Bins
     const defaultCenter = currentLocation || position;
     const defaultZoom = 13;
-    const bounds = AllUsers?.reduce(
+    const bounds = AllFull?.reduce(
       (acc, pointBin) => {
         const [lat, lon] = [
-          pointBin?.address?.latitude,
-          pointBin?.address?.longitude
+          pointBin?.lat,
+          pointBin?.long
         ];
 
         if (lat && lon) {
@@ -83,29 +108,7 @@ function MapsComponent() {
 
     }, [dispatch,AllUsers])
 
-    // ---------------------------------------------------------All Bins
-    const bins = useSelector(state=>state?.fetchBins?.fetchBins) || []
-    const municipal = useSelector(state=>state?.request?.request?.municipal) || []
-    const BinByMunicipal = useSelector(state=>state?.fetchBinByMunicipal?.BinListByMunicipal) || []
-    // console.log("bins--------------------", bins)
-    // console.log("BinByMunicipal--------------------", BinByMunicipal)
-    useEffect(() => {
-      dispatch(fetchPointBinAll())
 
-    }, [bins])
-    useEffect(() => {
-      dispatch(fetchPointBinAll())
-    }, [BinByMunicipal])
-    const pointBinsFull = bins && bins&& bins?.length > 0? bins?.filter((bin) => {
-      return bin.bins.some((b) => parseFloat(b.niv) >= 80);
-    }) : [];
-    // console.log(bins)
-    const BinByMunicipalFull = BinByMunicipal && BinByMunicipal.bins&& BinByMunicipal.bins.length > 0? BinByMunicipal?.bins?.filter((bin) => parseFloat(bin.niv) >= 80): [];
-
-
-    const AllFull = [...BinByMunicipalFull, ...pointBinsFull];
-    // console.log("AllFull--------------------", AllFull)
-    // ---------------------------------------------------------All Bins
 
 
 
@@ -132,13 +135,7 @@ function MapsComponent() {
           map.flyTo(currentLocation, map.getZoom());
         }
       }, [ map]);
-      return position1 === null ? null : (
-        <Marker position={position1}
-        // icon={}
-        >
-          <Popup>You are here</Popup>
-        </Marker>
-      );
+
     };
 
 
@@ -188,8 +185,11 @@ function MapsComponent() {
               <Tooltip target=".export-buttons>button" position="bottom" />
               <MapContainer
         style={{ height: "60vh" }}
-               center={defaultCenter}
-                zoom={defaultZoom} scrollWheelZoom={true}
+               center={
+                  defaultCenter
+               }
+                zoom={defaultZoom}
+                 scrollWheelZoom={true}
                bounds={bounds}
 
 
@@ -212,20 +212,71 @@ function MapsComponent() {
             }}
             >
 
+<Popup
+>
+{
+  e.bins &&
+  e.bins?.map((el) => {
+    let rgbValues;
+    switch (el.type) {
+      case 'organic':
+        rgbValues = '255, 0, 0'; // Red
+        break;
+      case 'paper':
+        rgbValues = '255, 255, 0'; // Yellow
+        break;
+      case 'plastique':
+        rgbValues = '0, 0, 255'; // Blue
+        break;
+      case 'glass':
+        rgbValues = '0, 255, 0'; // green
+      default:
+        // Default RGB values
+        rgbValues = '62, 152, 199';
+    }
+
+    const pathColor = `rgba(${rgbValues}, ${el?.niv / 100})`;
+    return (
+      <CircularProgressbar value={
+    el?.niv
+  } text={`${el?.type} ${  el?.niv
+
+  }%`}
+  // text="dd"
+  styles={buildStyles({
+    // Rotation of path and trail, in number of turns (0-1)
+    rotation: 0.25,
+
+    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+    strokeLinecap: 'butt',
+
+    // Text size
+    textSize: '16px',
+
+    // How long animation takes to go from one percentage to another, in seconds
+    pathTransitionDuration: 0.5,
+
+    // Can specify path transition in more detail, or remove it entirely
+    // pathTransition: 'none',
+
+    // Colors
+    pathColor: pathColor,
+    textColor: '#f88',
+    trailColor: '#d6d6d6',
+    backgroundColor: '#3e98c7',
+  })}
+  />
+    );
+  })
+}
+
+
+</Popup>
+
 
             </Marker>
           ))}
-        {currentLocation && (
-          <Marker position={currentLocation}
-            // icon={}
-            eventHandlers={{
-              click: () => alert('A marker has been clicked!')
-            }}
 
-          >
-            <Popup>Your current location</Popup>
-          </Marker>
-        )}
         <MapsMarker />
       </MapContainer>
 

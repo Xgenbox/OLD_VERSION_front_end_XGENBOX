@@ -3241,6 +3241,11 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@stencil/react-output-target@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.npmjs.org/@stencil/react-output-target/-/react-output-target-0.3.1.tgz"
+  integrity sha512-6d9pPhyajFfdxkqU/pPP2SzI7wn+EklySQc4KXlI/xcdvC2H9BzLmhmR40fR1q2TQoJbJui/nvSWhbYqkE3OBQ==
+
 "@surma/rollup-plugin-off-main-thread@^2.2.3":
   version "2.2.3"
   resolved "https://registry.npmjs.org/@surma/rollup-plugin-off-main-thread/-/rollup-plugin-off-main-thread-2.2.3.tgz"
@@ -6265,6 +6270,18 @@ each-props@^1.3.2:
   dependencies:
     is-plain-object "^2.0.1"
     object.defaults "^1.1.0"
+
+eases-jsnext@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.npmjs.org/eases-jsnext/-/eases-jsnext-1.0.10.tgz"
+  integrity sha512-1bO1+FIuqtOZpcyoIJuTnw8PU9X+RHHA248mZ1m+CPiiKFGCiNLWecITlhO4DXe7whZmBoJyfKwUoMW0KK5mNw==
+
+easing-animation-frames@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.npmjs.org/easing-animation-frames/-/easing-animation-frames-1.0.5.tgz"
+  integrity sha512-MLgz5IZMqAKANNyxQbgbERDv+YcOgHk49HUfoy5HS48/nehRBJfkoYYKURhXdb4S0i65f8Txr5NP/X7Md10x3g==
+  dependencies:
+    eases-jsnext "^1.0.10"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -11348,6 +11365,14 @@ process-nextick-args@^2.0.0, process-nextick-args@~2.0.0:
   resolved "https://registry.npmjs.org/process-nextick-args/-/process-nextick-args-2.0.1.tgz"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
 
+progress-ring-component@^1.0.34:
+  version "1.0.34"
+  resolved "https://registry.npmjs.org/progress-ring-component/-/progress-ring-component-1.0.34.tgz"
+  integrity sha512-zcZPsFly8aq6PjphZ6RIBcuxovmsmpuwqndXENOkeVmgXCRJpO0asImGdHIxRJPeSextvXXA7Lf+fG/4D19qlQ==
+  dependencies:
+    "@stencil/react-output-target" "^0.3.1"
+    easing-animation-frames "1.0.5"
+
 promise@^8.1.0:
   version "8.3.0"
   resolved "https://registry.npmjs.org/promise/-/promise-8.3.0.tgz"
@@ -11504,6 +11529,11 @@ react-chartjs-2@2.11.1:
   dependencies:
     lodash "^4.17.19"
     prop-types "^15.7.2"
+
+react-circular-progressbar@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.npmjs.org/react-circular-progressbar/-/react-circular-progressbar-2.1.0.tgz"
+  integrity sha512-xp4THTrod4aLpGy68FX/k1Q3nzrfHUjUe5v6FsdwXBl3YVMwgeXYQKDrku7n/D6qsJA9CuunarAboC2xCiKs1g==
 
 react-clientside-effect@^1.2.6:
   version "1.2.6"

@@ -1,21 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js install --network-timeout 100000
+  C:\Program Files\nodejs\node.exe C:\Users\Ziedb\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add progress-ring-component-react
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Docker\Docker\resources\bin;C:\Users\khiar\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\PuTTY\;C:\Users\khiar\AppData\Local\Pub\Cache\bin;C:\Users\khiar\.console-ninja\.bin;C:\Users\khiar\AppData\Local\Microsoft\WindowsApps;C:\Users\khiar\AppData\Local\Programs\Microsoft VS Code\bin;C:\flutter\bin;C:\Users\khiar\AppData\Roaming\nvm;C:\Program Files\nodejs
+  C:\Program Files\Microsoft\jdk-11.0.20.8-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Users\Ziedb\.jdks\jbr-17.0.8.1\bin;C:\xampp\php;C:\ProgramData\ComposerSetup\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files (x86)\ZeroTier\One\;C:\Users\Ziedb\.console-ninja\.bin;C:\Users\Ziedb\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Ziedb\AppData\Local\Programs\Python\Python312\;C:\Users\Ziedb\AppData\Local\Android\Sdk\tools;C:\Users\Ziedb\AppData\Local\Android\Sdk\tools;C:\Users\Ziedb\scoop\shims;C:\Users\Ziedb\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Azure Data Studio\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2023.2.2\bin;C:\Users\Ziedb\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Ziedb\AppData\Roaming\Composer\vendor\bin;C:\xampp\php;C:\Program Files\JetBrains\PhpStorm 2023.2.2\bin;C:\Users\Ziedb\AppData\Roaming\npm;C:\Users\Ziedb\AppData\Local\Android\Sdk\platform-tools;C:\Users\Ziedb\.dotnet\tools;C:\src\flutter\bin;C:\Users\Ziedb\AppData\Local\GitHubDesktop\bin
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  18.16.0
+  18.18.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: read ECONNRESET
-      at TLSWrap.onStreamRead (node:internal/stream_base_commons:217:20)
+  Error: EPERM: operation not permitted, copyfile 'C:\Users\Ziedb\AppData\Local\Yarn\Cache\v6\npm-react-mobile-app-button-1.0.13-integrity\node_modules\react-mobile-app-button\package.json' -> 'C:\Users\Ziedb\Desktop\Github project\Personal\Xgenbox\web\node_modules\react-mobile-app-button\package.json'
 
 npm manifest: 
   {
@@ -100,7 +99,7 @@ npm manifest:
       "jspdf": "^2.5.1",
       "jspdf-autotable": "^3.5.29",
       "jwt-decode": "^3.1.2",
-      "leaflet": "^1.9.3",
+      "leaflet": "^1.9.4",
       "leaflet-control-geocoder": "^2.4.0",
       "moment": "2.29.4",
       "nouislider": "14.1.1",
@@ -117,6 +116,7 @@ npm manifest:
       "react-file-viewer": "^1.2.1",
       "react-hook-form": "^7.43.9",
       "react-leaflet": "^4.2.1",
+      "react-loading-skeleton": "^3.3.1",
       "react-lottie": "^1.2.3",
       "react-mobile-app-button": "^1.0.13",
       "react-pdf": "^6.2.2",
@@ -9572,10 +9572,10 @@ Lockfile:
     optionalDependencies:
       open-location-code "^1.0.0"
   
-  leaflet@^1.9.3:
-    version "1.9.3"
-    resolved "https://registry.npmjs.org/leaflet/-/leaflet-1.9.3.tgz"
-    integrity sha512-iB2cR9vAkDOu5l3HAay2obcUHZ7xwUBBjph8+PGtmW/2lYhbLizWtG7nTeYht36WfOslixQF9D/uSIzhZgGMfQ==
+  leaflet@^1.9.4:
+    version "1.9.4"
+    resolved "https://registry.npmjs.org/leaflet/-/leaflet-1.9.4.tgz"
+    integrity sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==
   
   leven@^3.1.0:
     version "3.1.0"
@@ -11808,6 +11808,11 @@ Lockfile:
     version "3.0.4"
     resolved "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
     integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+  
+  react-loading-skeleton@^3.3.1:
+    version "3.3.1"
+    resolved "https://registry.npmjs.org/react-loading-skeleton/-/react-loading-skeleton-3.3.1.tgz"
+    integrity sha512-NilqqwMh2v9omN7LteiDloEVpFyMIa0VGqF+ukqp0ncVlYu1sKYbYGX9JEl+GtOT9TKsh04zCHAbavnQ2USldA==
   
   react-lottie@^1.2.3:
     version "1.2.3"
