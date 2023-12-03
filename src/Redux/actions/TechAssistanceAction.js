@@ -9,175 +9,156 @@ import { SET_ERRORS } from "Redux/types"
 
 import axios from "axios"
 
-export const createTechAssist = (data)=>dispatch=>{
-
-  console.log(data)
-  dispatch({
-    type: SET_ERRORS,
-    payload: []
-})
-dispatch({
-    type:SET_IS_LOADING,
-    payload:true
-})
-
-
-
-   
-  axios.post(`${process.env.REACT_APP_API_URL}/api/site/createTechAssist`,data, {   
-    headers: { "Content-Type": "multipart/form-data" } 
-} )
-  
-  .then(res => {
-      console.log(res)
+export const createTechAssist = (data) => async (dispatch) => {
+  try {
+      console.log(data);
       dispatch({
-        type: SET_ERRORS,
-        payload: []
-    })
-    dispatch({
-        type:SET_IS_LOADING,
-        payload:false
-    })
+          type: SET_ERRORS,
+          payload: []
+      });
+      dispatch({
+          type: SET_IS_LOADING,
+          payload: true
+      });
 
-    dispatch({
-      type:SET_IS_SECCESS,
-      payload:true
-  })
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/site/createTechAssist`, data, {
+          headers: { "Content-Type": "multipart/form-data" }
+      });
 
-  setTimeout(() => {
-    dispatch({
-      type:SET_IS_SECCESS,
-      payload:false
-  })
-  }, 3000);
-  })
-  .catch(err => 
-     { 
-      // console.log("err in authAction.js line 366",err)
+      console.log(res);
+      dispatch({
+          type: SET_ERRORS,
+          payload: []
+      });
+
+      dispatch({
+          type: SET_IS_LOADING,
+          payload: false
+      });
+
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: true
+      });
+
+      setTimeout(() => {
+          dispatch({
+              type: SET_IS_SECCESS,
+              payload: false
+          });
+      }, 3000);
+  } catch (err) {
+      // Handle errors
+      // console.log("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
-      })
+      });
+
       dispatch({
-        type:SET_IS_SECCESS,
-        payload:false
-    })
-  
-      // dispatch(registerGoogleUser(data))
+          type: SET_IS_SECCESS,
+          payload: false
+      });
   }
-  )
-}
+};
 
-export const FetchAllTechAssist = (data)=>dispatch=>{
-  axios.get(`${process.env.REACT_APP_API_URL}/api/site/TechAssist/fetchAll`,data )
-  .then(res => {
-      console.log(res)
+export const FetchAllTechAssist = (data) => async (dispatch) => {
+  try {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/TechAssist/fetchAll`, data);
+      console.log(res);
 
       dispatch({
-        type: SET_TECH_ASSIST,
-        payload: res.data
-    })
-      
-   
-   
- 
-
-  
-
-      // dispatch(registerGoogleUser(data))
-
-      // dispatch(loginUser(data))
-  })
-  .catch(err => 
-     { 
-      // console.log("err in authAction.js line 366",err)
+          type: SET_TECH_ASSIST,
+          payload: res.data
+      });
+  } catch (err) {
+      // Handle errors
+      // console.log("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
-      })
-      dispatch({
-        type:SET_IS_SECCESS,
-        payload:false
-    })
-  
-      // dispatch(registerGoogleUser(data))
-  }
-  )
-}
+      });
 
-export const GetTechAssistDetailsById = (id,navigation)=>dispatch=>{
-   
-  axios.get(`${process.env.REACT_APP_API_URL}/api/site/techAssist/fetchByID/${id}`)
-  .then(res => {
-      // console.log(res)
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: false
+      });
+  }
+};
+
+
+export const GetTechAssistDetailsById = (id, navigation) => async (dispatch) => {
+  try {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/techAssist/fetchByID/${id}`);
+      // console.log(res);
       dispatch({
           type: SET_TECH_ASSIST_DETAILS,
           payload: res?.data
-      })
-
-
-      // dispatch(registerGoogleUser(data))
-
-      // dispatch(loginUser(data))
-  })
-  .catch(err => 
-     { 
-      // console.log("err in authAction.js line 366",err)
+      });
+  } catch (err) {
+      // Handle errors
+      // console.log("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
-      })
-      // dispatch(registerGoogleUser(data))
+      });
+      // dispatch(registerGoogleUser(data));
   }
-  )
-}
+};
 
-export const UpdateTechAssistStatus = (id,navigation)=>dispatch=>{
+
+export const UpdateTechAssistStatus = (id, navigation) => async (dispatch) => {
   dispatch({
-    type: SET_ERRORS,
-    payload: []
-})
-dispatch({
-    type:SET_IS_LOADING,
-    payload:true
-})
-  axios.put(`${process.env.REACT_APP_API_URL}/api/site/TechAssist/readed/${id}`)
-  .then(res => {
-    dispatch({
       type: SET_ERRORS,
       payload: []
-  })
-  setTimeout(() => {
-      
-      dispatch({
-          type:SET_IS_LOADING,
-          payload:false
-      })
-  }, 1000);
-  dispatch({
-      type:SET_IS_SECCESS,
-      payload:true
-  })
-  setTimeout(() => {
-      dispatch({
-        type:SET_IS_SECCESS,
-        payload:false
-    })
-    }, 3000);
-  })
-  .catch(err => 
-     { 
-      // console.log("err in authAction.js line 366",err)
-      dispatch({
-        type:SET_IS_LOADING,
-        payload:false
-    })
+  });
 
-dispatch({
-    type:SET_IS_SECCESS,
-    payload:false
-})
-      // dispatch(registerGoogleUser(data))
+  dispatch({
+      type: SET_IS_LOADING,
+      payload: true
+  });
+
+  try {
+      const res = await axios.put(`${process.env.REACT_APP_API_URL}/api/site/TechAssist/readed/${id}`);
+      dispatch({
+          type: SET_ERRORS,
+          payload: []
+      });
+
+      setTimeout(() => {
+          dispatch({
+              type: SET_IS_LOADING,
+              payload: false
+          });
+      }, 1000);
+
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: true
+      });
+
+      setTimeout(() => {
+          dispatch({
+              type: SET_IS_SECCESS,
+              payload: false
+          });
+      }, 3000);
+  } catch (err) {
+      // Handle errors
+      // console.log("err in authAction.js line 366", err);
+      dispatch({
+          type: SET_IS_LOADING,
+          payload: false
+      });
+
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: false
+      });
+
+      dispatch({
+          type: SET_ERRORS,
+          payload: err?.response?.data
+      });
   }
-  )
-}
+};

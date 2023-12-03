@@ -125,7 +125,7 @@ export default function FooterComponent() {
                         color="#DCE2FF"
                         _hover={{ border: '2px solid #1C6FEB' }}
                         leftIcon={<FontAwesomeIcon icon={faPhone} />}>
-                        +216 20 200 698
+                        +216 56 332 666
                       </Button>
                       <Button
                         size="md"

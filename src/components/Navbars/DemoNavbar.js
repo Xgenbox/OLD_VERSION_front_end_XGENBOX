@@ -43,7 +43,7 @@ import { useSelector } from "react-redux";
 
 const DemoNavbar = () => {
   const user = useSelector((state) => state.auth);
-  console.log( user)
+  // console.log( user)
 
   // State for your collapse functionality
   const [collapseClasses, setCollapseClasses] = useState("");
@@ -289,7 +289,7 @@ const DemoNavbar = () => {
                       <NavLink
                         className="nav-link-icon"
                         // href="/admin"
-                        to="/admin"
+                        to="/login"
                         tag={Link}
                         id="tooltip3335890744"
                         // target="_blank"

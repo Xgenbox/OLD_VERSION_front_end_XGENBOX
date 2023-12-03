@@ -43,6 +43,7 @@ import PointBinDetails from "components/PointBinDetails";
 import EditPointBin from "components/EditPointBins";
 import MunicipalDetails from "components/MunicipalDetails";
 import MapsComponent from "components/MapsComponent";
+import MapCollector from "components/MapCollector";
 
 
 var routes = [
@@ -215,20 +216,20 @@ var routes = [
     component: CreateBinPoint,
     layout: "/admin"
   },
-  {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
-    component: Maps,
-    layout: "/admin"
-  },
-  {
-    path: "/feedbacks",
-    name: "Feedbacks",
-    icon: "ni ni-books text-green",
-    component: Maps,
-    layout: "/admin"
-  },
+  // {
+  //   path: "/maps",
+  //   name: "Maps",
+  //   icon: "ni ni-pin-3 text-orange",
+  //   component: Maps,
+  //   layout: "/admin"
+  // },
+  // {
+  //   path: "/feedbacks",
+  //   name: "Feedbacks",
+  //   icon: "ni ni-books text-green",
+  //   component: Maps,
+  //   layout: "/admin"
+  // },
   {
     path: "/Report",
     name: "Reports",
@@ -259,11 +260,18 @@ var routes = [
 
   // ----------------------------------------------------------------------------------------------------------------
   // Collector Routes
+  // {
+  //   path: "/index",
+  //   name: "Dashboard",
+  //   icon: "ni ni-tv-2 text-primary",
+  //   component: ListOfBins,
+  //   layout: "/collector"
+  // },
   {
     path: "/index",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
-    component: ListOfBins,
+    component: MapCollector,
     layout: "/collector"
   },
 

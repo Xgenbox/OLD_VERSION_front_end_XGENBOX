@@ -48,7 +48,7 @@ const MunicipalDetails = () => {
   const [notificationModal, setnotificationModal] = useState(false)
   const { id } = useParams();
   // console.log(MunicipalDetails)
- 
+
   const isLoad = useSelector(state=>state?.isLoading?.isLoading)
   const isSuccess = useSelector(state=>state?.success?.success)
   const dispatch = useDispatch()
@@ -64,22 +64,22 @@ const MunicipalDetails = () => {
   }, [MunicipalDetails])
   useEffect(() => {
     if (isSuccess) {
-      
+
       showToastMessage()
     }
   }, [isSuccess])
 
   const block = (id)=>{
-    console.log('block')
+    // console.log('block')
     dispatch(UpdateQuoteStatus(id))
   }
   const Unblock = (id)=>{
-    console.log("Unblock")
+    // console.log("Unblock")
     // dispatch(UnBlockUser(id))
     dispatch(UpdateQuoteStatus(id))
 
   }
-  console.log("userDetails :", PartnerDetails)
+  // console.log("userDetails :", PartnerDetails)
   const handleDownload = async(filePath) => {
 
 
@@ -91,9 +91,9 @@ const MunicipalDetails = () => {
       const fileName = 'your_file_name.pdf';
       saveAs(response.data, fileName);
     } catch (error) {
-      console.log('Error:', error);
+      // console.log('Error:', error);
     }
-      
+
 
   };
 
@@ -109,7 +109,7 @@ const MunicipalDetails = () => {
         <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
           <Card className="card-profile shadow">
             <Row className="justify-content-center">
-              
+
             </Row>
             <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
               {/* <div className="d-flex justify-content-between">
@@ -138,7 +138,7 @@ const MunicipalDetails = () => {
                 </h4>
             </CardHeader>
             <CardBody className="pt-0 pt-md-4">
-              
+
               <div className="text-center mt-md-5">
                 <h3>
                 {/* {PartnerDetails?.partnership?.name} */}
@@ -225,11 +225,11 @@ const MunicipalDetails = () => {
               </Button>
             </div>
           </Modal>
-            
+
           </CardBody>
         </Card>
       </div>
-    
+
       </Row>
       <Row>
       <div style={{ width: "18rem" }}>
@@ -248,11 +248,11 @@ const MunicipalDetails = () => {
                 </div>
               </Col>
             </Row>
-            
+
           </CardBody>
         </Card>
       </div>
-    
+
       </Row>
               </div>
             </CardBody>
@@ -269,7 +269,7 @@ const MunicipalDetails = () => {
                   {
                     MunicipalDetails?.status !=='valid' && (
 
-                  
+
                   <Button
                     color={`success`}
                     // href="#pablo"
@@ -281,8 +281,8 @@ const MunicipalDetails = () => {
         <span className="visually-hidden"></span>
       </div>
     ) : (
-      
-      "Accept" 
+
+      "Accept"
     )}
                   </Button>
   )
@@ -290,7 +290,7 @@ const MunicipalDetails = () => {
 {
     MunicipalDetails?.status !=='denied' && (
 
- 
+
                   <Button
                     color={ "danger"}
                     // href="#pablo"
@@ -302,8 +302,8 @@ const MunicipalDetails = () => {
         <span className="visually-hidden"></span>
       </div>
     ) : (
-      
-      "deny" 
+
+      "deny"
     )}
                   </Button>
                      )
@@ -318,7 +318,7 @@ const MunicipalDetails = () => {
                 </h6>
                 <div className="pl-lg-4">
                   <Row>
-                    
+
                     <Col lg="6">
                       <FormGroup>
                         <label
@@ -339,7 +339,7 @@ const MunicipalDetails = () => {
 
                         <small>{MunicipalDetails?.user?.email}</small>
                         </div>
-                       
+
                       </FormGroup>
                     </Col>
                   </Row>
@@ -433,7 +433,7 @@ const MunicipalDetails = () => {
                         </div>
                       </FormGroup>
                     </Col>
-                    
+
                   </Row>
                 </div>
                 <hr className="my-4" />
@@ -441,9 +441,9 @@ const MunicipalDetails = () => {
                 {/* <h6 className="heading-small text-muted mb-4">
                   Contact information
                 </h6> */}
-                
+
                 <hr className="my-4" />
-                 
+
                 {/* Description */}
                 {/* <h6 className="heading-small text-muted mb-4">About me</h6>
                 <div className="pl-lg-4">

@@ -64,7 +64,7 @@ const CreateBin = () => {
       .then((res) => {
         setgovernorates(res.data[0]);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {});
   }, []);
 
   const municipales = governorates?.governorates?.filter(
@@ -96,11 +96,11 @@ const CreateBin = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log({
-      ...form,
-      governorate: selectedValue,
-      municipale: selectedMunicipal,
-    });
+    // console.log({
+    //   ...form,
+    //   governorate: selectedValue,
+    //   municipale: selectedMunicipal,
+    // });
     dispatch(
       AddBin({
         ...form,
@@ -137,20 +137,20 @@ const CreateBin = () => {
                 </Col>
               </Row>
               <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-            
+
               </CardHeader>
               <CardBody className="pt-0 pt-md-4">
-                
+
                 <div className="text-center mt-md-5">
                   <h3>
                   {user?.name}
-                   
+
                   </h3>
                   <div className="h5 font-weight-300">
                     <i className="ni location_pin mr-2" />
                     {profile?. address}, {profile?.city}, {profile?.country}
                   </div>
-                 
+
                   <hr className="my-4" />
                   <p>
                     {profile?.Bio}
@@ -365,15 +365,15 @@ const CreateBin = () => {
                         </div>
                       </div>
                     </Col>
-                    {/* <Col 
+                    {/* <Col
     md="4"
     >
        <div className=" mb-3">
       <label className="form-label">Job Title</label>
       <div className="input-group">
-        
+
         <input type="text"  name={"jobTitle"} className={classNames("form-control")} onChange={onChangeHandler}/>
-       
+
       </div>
     </div>
     </Col> */}

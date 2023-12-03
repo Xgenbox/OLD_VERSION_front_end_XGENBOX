@@ -59,8 +59,8 @@ import { DeletePointBinByIDFromPointBin } from "Redux/actions/BinAction";
 const PointBinDetails = () => {
   const profile = useSelector(state=>state?.profile?.profile)
   const error = useSelector(state=>state.error?.errors)
-  
-  
+
+
 const isLoad = useSelector(state=>state?.isLoading?.isLoading)
   const isSuccess = useSelector(state=>state?.success?.success)
   const ListOfQuote= useSelector(state=>state?.quote?.quote?.quotes)
@@ -75,7 +75,7 @@ const [selectedValue, setSelectedValue] = useState('Tunis');
   const dispatch = useDispatch()
 
   const { id } = useParams();
- 
+
   dispatch({
     type:SET_IS_SECCESS,
     payload:false
@@ -83,32 +83,32 @@ const [selectedValue, setSelectedValue] = useState('Tunis');
 
 useEffect(() => {
   dispatch(FetchPointBinByID(id))
- 
+
 }, [PointBinDetails])
- 
- 
+
+
   const showToastMessage = () => {
     toast.success('Bin created successfully.', {
         position: toast.POSITION.TOP_RIGHT,
         autoClose: 3000,
     });
   }
-  
- 
-  
-  
-  
-  
+
+
+
+
+
+
   const [form, setForm] = useState({
     bins:[]
   })
-  
+
   const onChangeHandler = (e) => {
     const { name, checked, value } = e.target;
 
-  
+
     if (name === "bin1" || name === "bin2" || name === "bin3" || name === "bin4") {
-      
+
       setForm({ ...form, bins: [...form.bins, value] });
     } else {
       setForm({
@@ -116,42 +116,42 @@ useEffect(() => {
         [name]: value,
       });
     }
-  
-    console.log(form);
+
+    // console.log(form);
   };
   useEffect(() => {
     if (isSuccess) {
-      
+
       showToastMessage()
     }
   }, [isSuccess])
 
   useEffect(() => {
     dispatch(FetchAllBinsNotInUse())
-   
+
   }, [ListOfBinsNotInUse])
 
   // console.log(ListOfBinsNotInUse)
-  
+
 
   const onSubmit = (e)=>{
-    
-    e.preventDefault();
-    console.log({...form, governorate: selectedValue, municipale: selectedMunicipal})
 
-    
+    e.preventDefault();
+    // console.log({...form, governorate: selectedValue, municipale: selectedMunicipal})
+
+
   dispatch(AddPointBin({...form, governorate: selectedValue, municipale: selectedMunicipal}))
 
   // !error?.success ? showErrorToastMessage() : null
- 
 
-    
-   
+
+
+
       // showToastMessage()
       setSelectedBins([])
       e.target.reset();
-   
-  
+
+
   }
 
   const handleBinChange = (selectedBin, index) => {
@@ -177,15 +177,15 @@ useEffect(() => {
       .then(res => {
         setgovernorates(res.data[0]);
       })
-      .catch(err => console.log(err));
+      .catch(err => {});
   }, []);
 
    const municipales = governorates?.governorates?.filter(
     (item, index) => item.name === selectedValue,
   );
   const deleteBin = (idBin)=> {
-    
-    console.log("selectedItem", selectedItem)
+
+    // console.log("selectedItem", selectedItem)
     dispatch(DeletePointBinByIDFromPointBin(selectedItem, id))
     // if(isSuccess){
 
@@ -214,20 +214,20 @@ useEffect(() => {
                 </Col>
               </Row>
               <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-            
+
               </CardHeader>
               <CardBody className="pt-0 pt-md-4">
-                
+
                 <div className="text-center mt-md-5">
                   <h3>
                   {user?.name}
-                   
+
                   </h3>
                   <div className="h5 font-weight-300">
                     <i className="ni location_pin mr-2" />
                     {profile?. address}, {profile?.city}, {profile?.country}
                   </div>
-                 
+
                   <hr className="my-4" />
                   <p>
                     {profile?.Bio}
@@ -253,7 +253,7 @@ useEffect(() => {
 
                     <Button
                       // color="primary"
-                    
+
                       size="md"
                       >  Edit Point bin
                       <i className=" ml-2 fas fa-arrow-right" />
@@ -278,17 +278,17 @@ style={
 }
 >
   <Row>
-    
-    
-    <Col 
+
+
+    <Col
     md="12"
     >
        <div className=" mb-3">
       <label className="form-label  ">address </label>
       <div className="input-group">
-         
+
          <h4>{PointBinDetails?.address}</h4>
-        
+
         {/* <input type="text" required defaultValue={PointBinDetails&&PointBinDetails?.address} name={"address"} className={classNames("form-control")} onChange={onChangeHandler} /> */}
         {/* {
           errors && (<div  className="invalid-feedback">
@@ -301,14 +301,14 @@ style={
   </Row>
   <ToastContainer />
   <Row>
-    <Col 
+    <Col
     md="6"
     >
        <div className=" mb-3">
       <label className="form-label">Governorate<span style={{color:"red"}}>*</span></label>
       <div className="input-group">
-        
-        
+
+
         {/* {
           errors && (<div  className="invalid-feedback">
           {errors}
@@ -320,14 +320,14 @@ style={
       </div>
     </div>
     </Col>
-    <Col 
+    <Col
     md="6"
     >
        <div className=" mb-3">
       <label className="form-label">Municipal<span style={{color:"red"}}>*</span></label>
       <div className="input-group">
-        
-        
+
+
         {/* {
           errors && (<div  className="invalid-feedback">
           {errors}
@@ -339,57 +339,57 @@ style={
       </div>
     </div>
     </Col>
-    
+
   </Row>
   <Row>
-    <Col 
+    <Col
     md="6"
     >
        <div className=" mb-3">
       <label className="form-label">latitude <span style={{color:"red"}}>*</span></label>
       <div className="input-group">
-        
+
       <h4>
       {PointBinDetails?.lat}
       </h4>
       </div>
     </div>
     </Col>
-    <Col 
+    <Col
     md="6"
     >
        <div className=" mb-">
       <label className="form-label">Longitude<span style={{color:"red"}}>*</span></label>
       <div className="input-group">
-        
+
       <h4>
       {PointBinDetails?.long}
       </h4>
       </div>
     </div>
     </Col>
-    {/* <Col 
+    {/* <Col
     md="4"
     >
        <div className=" mb-3">
       <label className="form-label">Job Title</label>
       <div className="input-group">
-        
+
         <input type="text"  name={"jobTitle"} className={classNames("form-control")} onChange={onChangeHandler}/>
-       
+
       </div>
     </div>
     </Col> */}
   </Row>
   <Row>
-    <Col 
+    <Col
     md="12"
     >
        <div className=" mb-3">
       <label className="form-label">Quote request<span style={{color:"red"}}>*</span></label>
       <div className="input-group">
-        
-        
+
+
         {/* {
           errors && (<div  className="invalid-feedback">
           {errors}
@@ -407,15 +407,15 @@ style={
                   </tr>
                 </thead>
                 <tbody>
-                
-                    
-                    
+
+
+
                   <tr>
 
                     <th scope="row">
                     <Media className="align-items-center">
-                      
-                        
+
+
                         <Media>
                           <span className="mb-0 text-sm">
                             {/* {request?.name} */}
@@ -455,7 +455,7 @@ style={
                           <i className="fas fa-ellipsis-v" />
                         </DropdownToggle>
                         <DropdownMenu className="dropdown-menu-arrow" right>
-                          
+
                           <Link
                           to={`/admin/quote-details/${PointBinDetails?.quoteDemande?._id}`}
                           >
@@ -473,7 +473,7 @@ style={
                           >
                             Block
                           </DropdownItem> */}
-                       
+
                           {/* <DropdownItem
                             href="#pablo"
                             onClick={() => this.toggleModal("notificationModal")}
@@ -484,25 +484,25 @@ style={
                       </UncontrolledDropdown>
                     </td>
                   </tr>
-                  
-               
-                 
-                
+
+
+
+
                 </tbody>
               </Table>
-     
+
       </div>
     </div>
     </Col>
-    
-    
+
+
   </Row>
   <hr/>
   <h3>Bins</h3>
   <Row>
         <Col md="12">
           <div className="mb-3">
-            
+
             <div className="input-group">
             <Table className="align-items-center table-flush" responsive>
                 <thead className="thead-light">
@@ -518,15 +518,15 @@ style={
                 </thead>
                 <tbody>
                   {PointBinDetails?.bins?.map((request) => (
-                    
-                    
+
+
                   <tr>
 
                     <th scope="row">
                     <Media className="align-items-center">
-                      
-                        
-                       
+
+
+
                         <Media>
                           <span className="mb-0 text-sm">
                             {request?.name}
@@ -541,10 +541,10 @@ style={
                     {request?.gaz}
                     </td>
                     <td>
-                    {request?.niv} 
+                    {request?.niv}
                     </td>
                     <td>
-                      
+
                     <td>
                       <Badge color="" className="badge-dot mr-4">
                       {!request?.status ? (
@@ -552,14 +552,14 @@ style={
 <i className="bg-success" />
 is open now
                         </>
-                        
+
                       ) : (
                         <>
 
 <i className="bg-danger" />
 is Closed
                         </>
-                        
+
                       )
                         }
                         {/* <i className="bg-success" /> */}
@@ -593,7 +593,7 @@ is Closed
                     <td>
                       <div>
 
-                  
+
     </div>
                     </td>
                     </td>
@@ -664,7 +664,7 @@ is Closed
                           <i className="fas fa-ellipsis-v" />
                         </DropdownToggle>
                         <DropdownMenu className="dropdown-menu-arrow" right>
-                          
+
                           <Link
                           to={`/admin/bin-details/${request?._id}`}
                           >
@@ -681,22 +681,22 @@ is Closed
                             onClick={()=>{
 
                               setnotificationModal(true)
-                             
+
                               setselectedItem(request?._id)
-                            } 
+                            }
                             }
                             // disabled
                           >
                             Delete Bin
                           </DropdownItem>
-                          
+
                           {/* <DropdownItem
                             href="#pablo"
                             onClick={() => setnotificationModal(true)}
                           >
                             Block
                           </DropdownItem> */}
-                   
+
                           {/* <DropdownItem
                             href="#pablo"
                             onClick={() => this.toggleModal("notificationModal")}
@@ -707,10 +707,10 @@ is Closed
                       </UncontrolledDropdown>
                     </td>
                   </tr>
-                  
+
                   )) || []}
-                 
-                
+
+
                 </tbody>
               </Table>
             </div>
@@ -718,17 +718,17 @@ is Closed
         </Col>
       </Row>
 
-     
-      
 
-      
+
+
+
   <Row>
     <Col>
-    
+
     </Col>
   </Row>
   <Row>
-    <Col 
+    <Col
     md="4"
     >
        <div className=" mb-3">
@@ -742,15 +742,15 @@ is Closed
         </div>
     </div>
     </Col>
-    
-  </Row>
- 
- 
-  
-  
 
-  
-  
+  </Row>
+
+
+
+
+
+
+
 </form>
               </CardBody>
             </Card>

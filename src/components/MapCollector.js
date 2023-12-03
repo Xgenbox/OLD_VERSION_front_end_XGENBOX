@@ -25,8 +25,9 @@ import { Tooltip } from 'primereact/tooltip';
 import { useDispatch, useSelector } from "react-redux";
 import { GetAllUsers } from "Redux/actions/userAction";
 import { fetchPointBinAll } from "Redux/actions/BinAction";
+import LeafletRoutingMachine from "./LeafletRoutingMachine";
 
-function MapsComponent() {
+function MapCollector() {
   const [currentLocation, setCurrentLocation] = useState(null);
     // const position = [51.505, -0.09];
     const [position, setposition] = useState(
@@ -90,6 +91,15 @@ function MapsComponent() {
     //       console.log('clicked')
     //   }
     // })
+    const myLocIcon = L.icon({
+        iconUrl: require("../assets/img/brand/marker-courier.png"),
+        iconSize: [60, 60],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+        shadowSize: [50, 64],
+        shadowAnchor: [4, 62],
+        className: "my-custom-class"
+        });
     const myIcon = L.icon({
         iconUrl: require("../assets/img/brand/binMarker.png"),
         iconSize: [30, 40],
@@ -213,6 +223,20 @@ function MapsComponent() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <LeafletRoutingMachine
+            startingPoint={
+                currentLocation || position
+            }
+            destination={
+                [
+                    35.646974,
+                    10.1815
+                ]
+
+
+            }
+
+/>
 
         {AllFull &&
           AllFull?.map(e => (
@@ -320,6 +344,17 @@ function MapsComponent() {
 
             </Marker>
           ))}
+          {currentLocation && (
+          <Marker position={currentLocation}
+            icon={myLocIcon}
+            eventHandlers={{
+              click: () => alert('A marker has been clicked!')
+            }}
+
+          >
+            <Popup>Your current location</Popup>
+          </Marker>
+        )}
 
         <MapsMarker />
       </MapContainer>
@@ -338,4 +373,4 @@ function MapsComponent() {
   )
 }
 
-export default MapsComponent
+export default MapCollector

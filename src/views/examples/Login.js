@@ -180,12 +180,7 @@ function Login () {
             }`}
 
           />
-          <ErrorMessage
-            name="password"
-            component="div"
-            className="invalid-feedback"
-          />
-        <Button
+          <Button
       type="button"
       className="btn-icon"
       onClick={togglePasswordVisibility}
@@ -197,6 +192,12 @@ function Login () {
         "Show"
       )}
     </Button>
+          <ErrorMessage
+            name="password"
+            component="div"
+            className="invalid-feedback"
+          />
+
         </InputGroup>
       </FormGroup>
       <div className="  ">

@@ -8,176 +8,173 @@ import { SET_ERRORS } from "Redux/types"
 
 import axios from "axios"
 
-export const CreateContactUs = (data)=>dispatch=>{
-  dispatch({
-    type: SET_ERRORS,
-    payload: []
-})
-dispatch({
-    type:SET_IS_LOADING,
-    payload:true
-})
-
-
-
-   
-  axios.post(`${process.env.REACT_APP_API_URL}/api/site/AddContactUs`,data )
-  .then(res => {
-      console.log(res)
+export const CreateContactUs = (data) => async (dispatch) => {
+  try {
       dispatch({
-        type: SET_ERRORS,
-        payload: []
-    })
-    dispatch({
-        type:SET_IS_LOADING,
-        payload:false
-    })
+          type: SET_ERRORS,
+          payload: []
+      });
 
-    dispatch({
-      type:SET_IS_SECCESS,
-      payload:true
-  })
+      dispatch({
+          type: SET_IS_LOADING,
+          payload: true
+      });
 
-  setTimeout(() => {
-    dispatch({
-      type:SET_IS_SECCESS,
-      payload:false
-  })
-  }, 3000);
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/site/AddContactUs`, data);
 
-  
+      console.log(res);
+
+      dispatch({
+          type: SET_ERRORS,
+          payload: []
+      });
+
+      dispatch({
+          type: SET_IS_LOADING,
+          payload: false
+      });
+
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: true
+      });
+
+      setTimeout(() => {
+          dispatch({
+              type: SET_IS_SECCESS,
+              payload: false
+          });
+      }, 3000);
 
       // dispatch(registerGoogleUser(data))
-
       // dispatch(loginUser(data))
-  })
-  .catch(err => 
-     { 
+  } catch (err) {
       // console.log("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
-      })
+      });
+
       dispatch({
-        type:SET_IS_SECCESS,
-        payload:false
-    })
-  
+          type: SET_IS_SECCESS,
+          payload: false
+      });
+
+      dispatch({
+          type: SET_IS_LOADING,
+          payload: false
+      });
+
       // dispatch(registerGoogleUser(data))
   }
-  )
-}
+};
 
-export const FetchAllContact = (data)=>dispatch=>{
-  axios.get(`${process.env.REACT_APP_API_URL}/api/site/contactUs/fetchAll`,data )
-  .then(res => {
-      console.log(res)
+
+export const FetchAllContact = (data) => async (dispatch) => {
+  try {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/contactUs/fetchAll`, data);
+
+      console.log(res);
 
       dispatch({
-        type: SET_CONTACT_LIST,
-        payload: res.data
-    })
-      
-   
-   
- 
-
-  
+          type: SET_CONTACT_LIST,
+          payload: res.data
+      });
 
       // dispatch(registerGoogleUser(data))
-
       // dispatch(loginUser(data))
-  })
-  .catch(err => 
-     { 
+  } catch (err) {
       // console.log("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
-      })
+      });
+
       dispatch({
-        type:SET_IS_SECCESS,
-        payload:false
-    })
-  
+          type: SET_IS_SECCESS,
+          payload: false
+      });
+
       // dispatch(registerGoogleUser(data))
   }
-  )
-}
+};
 
-export const GetContactUsById = (id,navigation)=>dispatch=>{
-   
-  axios.get(`${process.env.REACT_APP_API_URL}/api/site/contactUs/fetchByID/${id}`)
-  .then(res => {
+
+export const GetContactUsById = (id, navigation) => async (dispatch) => {
+  try {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/contactUs/fetchByID/${id}`);
+
       // console.log(res)
       dispatch({
           type: SET_CONTACT_DETAIL,
           payload: res?.data
-      })
-
+      });
 
       // dispatch(registerGoogleUser(data))
-
       // dispatch(loginUser(data))
-  })
-  .catch(err => 
-     { 
+  } catch (err) {
       // console.log("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
-      })
+      });
+
       // dispatch(registerGoogleUser(data))
   }
-  )
-}
+};
 
-export const UpdateContactStatus = (id,navigation)=>dispatch=>{
+
+export const UpdateContactStatus = (id, navigation) => async (dispatch) => {
   dispatch({
-    type: SET_ERRORS,
-    payload: []
-})
-dispatch({
-    type:SET_IS_LOADING,
-    payload:true
-})
-  axios.put(`${process.env.REACT_APP_API_URL}/api/site/contactUs/readed/${id}`)
-  .then(res => {
-    dispatch({
       type: SET_ERRORS,
       payload: []
-  })
-  setTimeout(() => {
-      
-      dispatch({
-          type:SET_IS_LOADING,
-          payload:false
-      })
-  }, 1000);
+  });
   dispatch({
-      type:SET_IS_SECCESS,
-      payload:true
-  })
-  setTimeout(() => {
+      type: SET_IS_LOADING,
+      payload: true
+  });
+
+  try {
+      const res = await axios.put(`${process.env.REACT_APP_API_URL}/api/site/contactUs/readed/${id}`);
+
       dispatch({
-        type:SET_IS_SECCESS,
-        payload:false
-    })
-    }, 3000);
-  })
-  .catch(err => 
-     { 
+          type: SET_ERRORS,
+          payload: []
+      });
+
+      setTimeout(() => {
+          dispatch({
+              type: SET_IS_LOADING,
+              payload: false
+          });
+      }, 1000);
+
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: true
+      });
+
+      setTimeout(() => {
+          dispatch({
+              type: SET_IS_SECCESS,
+              payload: false
+          });
+      }, 3000);
+  } catch (err) {
       // console.log("err in authAction.js line 366",err)
       dispatch({
-        type:SET_IS_LOADING,
-        payload:false
-    })
+          type: SET_IS_LOADING,
+          payload: false
+      });
 
-dispatch({
-    type:SET_IS_SECCESS,
-    payload:false
-})
-      // dispatch(registerGoogleUser(data))
+      dispatch({
+          type: SET_IS_SECCESS,
+          payload: false
+      });
+
+      dispatch({
+          type: SET_ERRORS,
+          payload: err?.response?.data
+      });
   }
-  )
-}
+};

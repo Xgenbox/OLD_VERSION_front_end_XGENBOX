@@ -62,7 +62,7 @@ function ListOfPointBin() {
     { id: 2, name: 'Jane Smith', age: 30 },
     // Add more data as needed
   ];
-  
+
   // PDF component
 const PDFDocument = ({data}) => {
   // console.table(data)
@@ -106,7 +106,7 @@ const PDFDocument = ({data}) => {
   const startTimer = () => {
     setCount(10);
   };
-  
+
 
   // console.log(ListOfUsers)
     const [notificationModal, setnotificationModal] = useState(false)
@@ -114,17 +114,17 @@ const PDFDocument = ({data}) => {
 
 
 
-  
+
   useEffect(() => {
     dispatch(FetchAllPointBins())
-   
+
   }, [ListOfPointBins])
   // console.log(ListOfPointBins)
-  
+
   const PutRequest = (status, id)=> {
     // alert("accept", status)
     dispatch(UpadeteRequest({status, id}))
-    console.log(status)
+    // console.log(status)
     setnotificationModal(false)
 
   }
@@ -134,7 +134,7 @@ const PDFDocument = ({data}) => {
       payload: {}
   })
   }, [])
-  
+
   const showToastMessage = () => {
     toast.success('Request sent successfully.', {
         position: toast.POSITION.TOP_RIGHT,
@@ -143,15 +143,15 @@ const PDFDocument = ({data}) => {
   }
   useEffect(() => {
     if (isSuccess) {
-      
+
       showToastMessage()
     }
   }, [isSuccess])
-  
-  
-  
+
+
+
   const deleteBin = ()=> {
-    console.log("delete")
+    // console.log("delete")
     // alert("delete :", selectedItem)
     dispatch(DeletePointBinByID(selectedItem))
     // if(isSuccess){
@@ -159,7 +159,7 @@ const PDFDocument = ({data}) => {
     //   startTimer()
     // }
   }
-  
+
   return (
     <>
     <Header />
@@ -171,22 +171,22 @@ const PDFDocument = ({data}) => {
             <Card className="shadow">
               <CardHeader className="border-0">
                 <Row>
-                  <Col 
+                  <Col
                   // lg="6"
-                    md="9" 
+                    md="9"
                   >
                 <h3 className="mb-0">List Of all Point Bins</h3>
                   </Col>
-                  <Col 
-                 
-                    md="3" 
+                  <Col
+
+                    md="3"
                   >
                      {/* <Link
                           to={`/admin/Add-Point-Bin`}
                           >
                             <Button
                             className="float-right"
-                          
+
                             >
 
 
@@ -210,19 +210,19 @@ const PDFDocument = ({data}) => {
                 </thead>
                 <tbody>
                   {ListOfPointBins &&ListOfPointBins?.map((request) => (
-                    
-                    
+
+
                   <tr>
 
                     <th scope="row">
                     <Media className="align-items-center">
-                      
-                        
-                       
+
+
+
                         <Media>
                           <span className="mb-0 text-sm">
                             {request?.quoteDemande?.name} / {request?.quoteDemande?.companyName}
-                           
+
                           </span>
                         </Media>
                       </Media>
@@ -234,7 +234,7 @@ const PDFDocument = ({data}) => {
                     {request?.quoteDemande?.tel}
                     </td>
                     <td>
-                    {request?.code} 
+                    {request?.code}
                     </td>
                     <td>
                     <td>
@@ -253,13 +253,13 @@ const PDFDocument = ({data}) => {
   color={`${!request?.status ? "success" : "primary"}`}
   // onClick={request?.status ? () => Unblock(request?._id) : () => block(request?._id)}
   size="sm"
-  
+
 >
   <PDFDownloadLink document={<PDFDocument data={request} />} fileName={request?.quoteDemande?.name}>
 {({ blob, url, loading, error }) =>
 // loading ? 'Loading document...' : 'Download Pdf'
 'Download details'
- 
+
 }
 </PDFDownloadLink>
 </Button>
@@ -332,7 +332,7 @@ const PDFDocument = ({data}) => {
                           <i className="fas fa-ellipsis-v" />
                         </DropdownToggle>
                         <DropdownMenu className="dropdown-menu-arrow" right>
-                          
+
                           <Link
                           to={`/admin/point-bin-details/${request?._id}`}
                           >
@@ -409,22 +409,22 @@ const PDFDocument = ({data}) => {
                       </UncontrolledDropdown>
                     </td>
                   </tr>
-                  
+
                   )) || []}
-                 
-                
+
+
                 </tbody>
               </Table>
               <CardFooter className="py-4">
                 <nav aria-label="...">
-                 
+
                 </nav>
               </CardFooter>
             </Card>
           </div>
         </Row>
         {/* Dark table */}
-       
+
       </Container>
   </>
   )

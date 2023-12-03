@@ -7,59 +7,55 @@ import { SET_USERS } from "Redux/types"
 
 import axios from "axios"
 
-export const GetAllUsers = (navigation)=>dispatch=>{
-   
-  axios.get(`${process.env.REACT_APP_API_URL}/api/users/getUsers`)
-  .then(res => {
-      // console.log(res)
-      dispatch({
-          type: SET_USERS,
-          payload: res?.data
-      })
-
-
-      // dispatch(registerGoogleUser(data))
-
-      // dispatch(loginUser(data))
-  })
-  .catch(err => 
-     { 
-      // console.log("err in authAction.js line 366",err)
-      dispatch({
-          type: SET_ERRORS,
-          payload: err?.response?.data
-      })
-      // dispatch(registerGoogleUser(data))
-  }
-  )
-}
-
-export const GetAllUserDetails = (id,navigation)=>dispatch=>{
-   
-    axios.get(`${process.env.REACT_APP_API_URL}/api/users/${id}`)
-    .then(res => {
-        // console.log(res)
-        dispatch({
-            type: SET_USERS_DETAILS,
-            payload: res?.data
+export const GetAllUsers = (navigation) => (dispatch) => {
+    try {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/api/users/getUsers`)
+        .then((res) => {
+          // console.log(res)
+          dispatch({
+            type: SET_USERS,
+            payload: res?.data,
+          });
         })
-  
-  
-        // dispatch(registerGoogleUser(data))
-  
-        // dispatch(loginUser(data))
-    })
-    .catch(err => 
-       { 
-        // console.log("err in authAction.js line 366",err)
-        dispatch({
+        .catch((err) => {
+          // console.log("err in authAction.js line 366",err)
+          dispatch({
             type: SET_ERRORS,
-            payload: err?.response?.data
-        })
-        // dispatch(registerGoogleUser(data))
+            payload: err?.response?.data,
+          });
+        });
+    } catch (error) {
+      console.error("An error occurred in GetAllUsers action:", error);
+      // You can dispatch an error action or handle the error as needed
     }
-    )
-  }
+  };
+
+
+  export const GetAllUserDetails = (id, navigation) => (dispatch) => {
+    try {
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/api/users/${id}`)
+        .then((res) => {
+          // console.log(res)
+          dispatch({
+            type: SET_USERS_DETAILS,
+            payload: res?.data,
+          });
+        })
+        .catch((err) => {
+          // console.log("err in authAction.js line 366",err)
+          dispatch({
+            type: SET_ERRORS,
+            payload: err?.response?.data,
+          });
+        });
+    } catch (error) {
+      console.error("An error occurred in GetAllUserDetails action:", error);
+      // You can dispatch an error action or handle the error as needed
+    }
+  };
+
 
 
   export const BlockUser = (id,navigation)=>dispatch=>{
@@ -74,13 +70,13 @@ export const GetAllUserDetails = (id,navigation)=>dispatch=>{
     axios.put(`${process.env.REACT_APP_API_URL}/api/users/block/${id}`)
     .then(res => {
         // console.log(res)
-        
+
         dispatch({
             type: SET_ERRORS,
             payload: []
         })
         setTimeout(() => {
-            
+
             dispatch({
                 type:SET_IS_LOADING,
                 payload:false
@@ -96,26 +92,26 @@ export const GetAllUserDetails = (id,navigation)=>dispatch=>{
               payload:false
           })
           }, 3000);
-  
+
         // dispatch(registerGoogleUser(data))
-  
+
         // dispatch(loginUser(data))
     })
-    .catch(err => 
-       { 
+    .catch(err =>
+       {
         // console.log("err in authAction.js line 366",err)
         dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data
         })
-       
-        
-            
+
+
+
             dispatch({
                 type:SET_IS_LOADING,
                 payload:false
             })
-      
+
         dispatch({
             type:SET_IS_SECCESS,
             payload:false
@@ -136,14 +132,14 @@ export const GetAllUserDetails = (id,navigation)=>dispatch=>{
     axios.put(`${process.env.REACT_APP_API_URL}/api/users/deblock/${id}`)
     .then(res => {
         console.log(res)
-       
-  
+
+
         dispatch({
             type: SET_ERRORS,
             payload: []
         })
         setTimeout(() => {
-            
+
             dispatch({
                 type:SET_IS_LOADING,
                 payload:false
@@ -160,17 +156,17 @@ export const GetAllUserDetails = (id,navigation)=>dispatch=>{
           })
           }, 3000);
         // dispatch(registerGoogleUser(data))
-  
+
         // dispatch(loginUser(data))
     })
-    .catch(err => 
-       { 
+    .catch(err =>
+       {
         // console.log("err in authAction.js line 366",err)
         dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data
         })
-       
+
         dispatch({
             type:SET_IS_LOADING,
             payload:false
