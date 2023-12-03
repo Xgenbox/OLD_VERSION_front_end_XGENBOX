@@ -44,6 +44,11 @@ import EditPointBin from "components/EditPointBins";
 import MunicipalDetails from "components/MunicipalDetails";
 import MapsComponent from "components/MapsComponent";
 import MapCollector from "components/MapCollector";
+import SpecificRequest from "components/company dashboard/SpecificRequest";
+import quoteRequest from "components/company dashboard/quoteRequest";
+import AppointmentRequest from "components/company dashboard/AppointmentRequest";
+import QRCodeGenerator from "components/company dashboard/QRCodeGenerator";
+import addproduct from "components/company dashboard/addproduct";
 
 
 var routes = [
@@ -257,7 +262,41 @@ var routes = [
     component: ListOfBins,
     layout: "/company"
   },
-
+  {
+    path: "/specific-request",
+    name: "Specific request",
+    icon: "ni ni-chat-round text-primary",
+    component: SpecificRequest,
+    layout: "/company"
+  },
+  {
+    path: "/quote-request",
+    name: "Quote request",
+    icon: "ni ni-align-left-2 text-primary",
+    component: quoteRequest,
+    layout: "/company"
+  },
+  {
+    path: "/appointment-request",
+    name: "Appointment request",
+    icon: "ni ni-calendar-grid-58 text-primary",
+    component: AppointmentRequest,
+    layout: "/company"
+  },
+  {
+    path: "/QRCodeGenerator",
+    name: "QR Code Generator",
+    icon: "ni ni-app text-primary",
+    component: QRCodeGenerator,
+    layout: "/company"
+  },
+  {
+    path: "/add-product",
+    name: "Add product",
+    icon: "ni ni-app text-primary",
+    component: addproduct,
+    layout: "/company"
+  },
   // ----------------------------------------------------------------------------------------------------------------
   // Collector Routes
   // {

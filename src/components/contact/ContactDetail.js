@@ -135,7 +135,7 @@ function ContactDetail() {
                         fontSize: 21,
                       }}
                     />
-                    +216 20 200 698
+                    +216 56 332 666
                   </Col>
                 </Row>
                 <Row
