@@ -47,23 +47,23 @@ function PartnershipList() {
   const partnerShipLists = useSelector(state=>state?.partnerShipList?.PartnerShipList)
   const requestsMunicipal = useSelector(state=>state?.MunicipaRequest?.MunicipalRequest )
   const ListOfUsers = useSelector(state=>state?.users?.users)
-  console.log(ListOfUsers)
+  // console.log(ListOfUsers)
     const [notificationModal, setnotificationModal] = useState(false)
-  console.log(requestsMunicipal)
+  // console.log(requestsMunicipal)
 
 
   const dispatch = useDispatch()
-  
+
   useEffect(() => {
     dispatch(FetchAllPartnership())
-   
+
   }, [partnerShipLists])
-  console.log("partner:",partnerShipLists)
-  
+  // console.log("partner:",partnerShipLists)
+
   const PutRequest = (status, id)=> {
     // alert("accept", status)
     dispatch(UpadeteRequest({status, id}))
-    console.log(status)
+    // console.log(status)
     setnotificationModal(false)
 
   }
@@ -135,10 +135,10 @@ const header = (
       {/* </div> */}
       </Col>
   </Row>
- 
+
   </>
 );
-  
+
   return (
     <>
     <Header />
@@ -164,19 +164,19 @@ const header = (
                 </thead>
                 <tbody>
                   {partnerShipLists?.partnerships && partnerShipLists?.partnerships?.map((request) => (
-                    
-                    
+
+
                   <tr>
 
                     <th scope="row">
-                  
-                      
-                        
+
+
+
                         <Media>
                           <span className="mb-0 text-sm">
                             {request?.email}
                           </span>
-                        
+
                       </Media>
                     </th>
                     <td>
@@ -196,17 +196,17 @@ const header = (
 <i className="bg-danger" />
                         unreaded
                         </>
-                        
+
                       ) : (
                         <>
 
 <i className="bg-primary" />
                         Readed
                         </>
-                        
+
                       )
                         }
-                       
+
                       </Badge>
                     </td>
                     </td>
@@ -223,22 +223,22 @@ const header = (
                           <i className="fas fa-ellipsis-v" />
                         </DropdownToggle>
                         <DropdownMenu className="dropdown-menu-arrow" right>
-                          
+
                           <Link
                           to={`/admin/partner-details/${request?._id}`}
                           >
                           <DropdownItem
-                         
+
                           >
                             Show details
                           </DropdownItem>
                             </Link>
-                          
+
                           <Modal
               className="modal-dialog-centered modal-danger"
               contentClassName="bg-gradient-danger"
               isOpen={notificationModal}
-            
+
             >
               <div className="modal-header">
                 <h6 className="modal-title" id="modal-title-notification">
@@ -280,20 +280,20 @@ const header = (
                 </Button>
               </div>
             </Modal>
-                          
+
                         </DropdownMenu>
                       </UncontrolledDropdown>
                     </td>
                   </tr>
-                  
+
                   )) || []}
-                 
-                
+
+
                 </tbody>
               </Table> */}
 
               <div className="card">
-              
+
               <Tooltip target=".export-buttons>button" position="bottom" />
               <DataTable paginator rows={5} rowsPerPageOptions={[5, 10, 25]} ref={dt} value={partnerShipLists?.partnerships} header={header} selection={selectedProduct}
               selectionMode={true}
@@ -301,13 +301,13 @@ const header = (
               filters={filters} filterDisplay="menu" globalFilterFields={['_id','email', 'tel', 'city', 'country', 'status', ]}
               onRowClick={
                 (e) => {
-             
+
                   const url = `/admin/partner-details/${e.data._id}`;
   history.push(url);
                 }
               }
-              
-             
+
+
                sortMode="multiple"className="thead-light" tableStyle={{ minWidth: '50rem' }}>
                 {/* <Column field="_id" header="ID" sortable className="thead-light" ></Column>
                 <Column field="name" header="Name" sortable className="thead-light" ></Column>
@@ -380,7 +380,7 @@ const header = (
           </div>
         </Row>
         {/* Dark table */}
-       
+
       </Container>
   </>
   )

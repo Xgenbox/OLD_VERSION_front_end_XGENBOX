@@ -4,8 +4,8 @@ import {  SET_USERS } from "../types"
 
 const initialState = {
     users: []
-    
-    
+
+
 }
 
 export default function(state = initialState, action) {
@@ -14,9 +14,9 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 users: action.payload
-              
+
             }
-        
+
         default:
             return state
     }
