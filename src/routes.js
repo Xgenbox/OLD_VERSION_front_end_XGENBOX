@@ -51,6 +51,7 @@ import QRCodeGenerator from "components/company dashboard/QRCodeGenerator";
 import addproduct from "components/company dashboard/addproduct";
 import medicineDetials from "components/company dashboard/medicineDetials";
 import EditMedicine from "components/company dashboard/EditMedicine";
+import ScanQRCode from "components/company dashboard/ScanQRCode";
 
 
 var routes = [
@@ -287,7 +288,7 @@ var routes = [
   },
   {
     path: "/QRCodeGenerator",
-    name: "QR Code Generator",
+    name: "Medicine",
     icon: "ni ni-app text-primary",
     component: QRCodeGenerator,
     layout: "/company"
@@ -311,6 +312,13 @@ var routes = [
     name: "Edit Medicine",
     icon: "ni ni-planet text-blue",
     component: EditMedicine,
+    layout: "/company"
+  },
+  {
+    path: "/user-qr-scanner/",
+    name: "Scan QR Code",
+    icon: "ni ni-key-25 text-blue",
+    component: ScanQRCode,
     layout: "/company"
   },
   // ----------------------------------------------------------------------------------------------------------------

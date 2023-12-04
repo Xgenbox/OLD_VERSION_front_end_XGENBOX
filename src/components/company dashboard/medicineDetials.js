@@ -22,7 +22,7 @@ import {
   import UserHeader from "../Headers/UserHeader";
   import UserDetailsHeader from "../Headers/UserDetailsHeader";
   import { useParams } from "react-router-dom";
-  import { useEffect, useState } from "react";
+  import { useEffect, useRef, useState } from "react";
   import { GetAllUserDetails } from "Redux/actions/userAction";
   import { ToastContainer, toast } from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
@@ -34,6 +34,12 @@ import {
   import QRCode from "react-qr-code";
   import {Link} from "react-router-dom"
 import { GetMedicineById } from "Redux/actions/medicineAction";
+import { QRCode as QAAA } from "react-qr-svg";
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import download from 'downloadjs';
+import { PDFDownloadLink, Document, Page, Text } from '@react-pdf/renderer';
+import Index from "./components/downloadfile";
   const medicineDetials = () => {
     const profile = useSelector(state=>state?.profile?.[0]?.profile)
     const user = useSelector(state=>state.auth?.user)
@@ -48,6 +54,10 @@ import { GetMedicineById } from "Redux/actions/medicineAction";
     const isSuccess = useSelector(state=>state?.success?.success)
     const dispatch = useDispatch()
 
+    // ------------QR CODE
+
+    // ------------QR CODE
+    //
     const showToastMessage = () => {
       toast.success('Request sent successfully.', {
           position: toast.POSITION.TOP_RIGHT,
@@ -75,7 +85,33 @@ import { GetMedicineById } from "Redux/actions/medicineAction";
 
     }
     // console.log("userDetails :", PartnerDetails)
+    const PDFDocument = ({data}) => {
+      // console.table(data)
 
+      return  (
+        <Document>
+        <Page>
+          {/* {data?.map(item => ( */}
+            <Text>{data?.name}</Text>
+            <Text>{data?.createdAt}</Text>
+            <Text>{data?.updatedAt}</Text>
+            <Text>{data?.id}</Text>
+            <Text>{data?.company}</Text>
+            {/* qr code ?  */}
+            <QAAA
+            bgColor="#FFFFFF"
+            fgColor="#000000"
+            level="Q"
+            style={{ width: 256 }}
+            value={data?.id}
+          />
+
+            {/* ))} */}
+        </Page>
+      </Document>
+    );
+
+    }
     return (
       <>
         <UserDetailsHeader />
@@ -306,12 +342,20 @@ import { GetMedicineById } from "Redux/actions/medicineAction";
                               type="number"
                             /> */}
                             <div>
-                            <QRCode
+                            {/* <QRCode
+                            // id = 'qrcode'
+                            // ref={qrCodeRef}
       size={10}
       style={{ height: "auto", maxWidth: "50%", width: "50%" }}
       value={id}
       viewBox={`0 0 256 256`}
+      /> */}
+      <Index
+      id={id}
+      name={ medicineDetails?.name}
+
       />
+
                             </div>
                           </FormGroup>
                         </Col>
