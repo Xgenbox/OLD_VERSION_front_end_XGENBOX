@@ -46,6 +46,7 @@ import {
 import { GetMedicineById } from "Redux/actions/medicineAction";
 import { SET_ERRORS } from "Redux/types";
 import { UpdateMedicine } from "Redux/actions/medicineAction";
+import {QrScanner} from '@yudiel/react-qr-scanner';
   const ScanQRCode = () => {
     const { id } = useParams();
     const profile = useSelector(state=>state?.profile?.profile)
@@ -159,22 +160,22 @@ import { UpdateMedicine } from "Redux/actions/medicineAction";
 
   }
   >
+    <QrScanner
+          onDecode={(result) => console.log(result)}
+          onError={(error) => console.log(error?.message)}
+      />
     <Row>
       <Col
       md="12"
       >
-         <div className=" mb-3">
+         {/* <div className=" mb-3">
         <label className="form-label">Name<span style={{color:"red"}}>*</span></label>
         <div className="input-group">
 
           <input type="text" required defaultValue={medicineDetails?.name}  name={"name"} className={classNames("form-control")} onChange={onChangeHandler}/>
-          {/* {
-            errors && (<div  className="invalid-feedback">
-            {errors}
-          </div>)
-          } */}
+
         </div>
-      </div>
+      </div> */}
       </Col>
 
 
@@ -184,43 +185,14 @@ import { UpdateMedicine } from "Redux/actions/medicineAction";
 
 
 
-    <Row>
-      <Col
-      md="4"
-      >
-         <div className=" mb-3">
-        {
-            !error?.success && (<span style={{color:"red"}}>
-  {error?.success ? "" : error?.error}
-            </span>)
-          }
-          <div   >
-            {/* {errors}dfds */}
-          </div>
-      </div>
-      </Col>
-
-    </Row>
 
 
 
 
 
 
-    <Row>
-      <Col>
-      <button type="submit" className="btn btn-outline-primary">
-      {isLoad ? (
-          <div className="spinner-border text-light" role="status">
-            <span className="visually-hidden"></span>
-          </div>
-        ) : (
-          'Update'
-        )}
 
-                    <i className="fa-solid fa-floppy-disk"></i>
-                  </button></Col>
-    </Row>
+
   </form>
                 </CardBody>
               </Card>
