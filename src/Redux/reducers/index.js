@@ -29,6 +29,7 @@ import MunicipalDetailsReducer from './MunicipalDetails.reducer';
 import fetchBinsReducer from 'Redux/actions/fetchBins.reducer';
 import AllAppointmentsListReducers from './AllAppointmentsList.reducers';
 import fetchMedicineReducer from './fetchMedicine.reducer';
+import medicineDetailsReducer from './medicineDetails.reducer';
 export default combineReducers({
     auth:authReducer,
     error:errorReducer,
@@ -59,5 +60,6 @@ export default combineReducers({
     fetchBins : fetchBinsReducer,
     Allappointment : AllAppointmentsListReducers,
     AllMedicines : fetchMedicineReducer,
+    MedicineDetails : medicineDetailsReducer,
 
 })

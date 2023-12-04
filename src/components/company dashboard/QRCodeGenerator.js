@@ -50,6 +50,7 @@ import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import { GetAllMedicine } from 'Redux/actions/medicineAction';
+import { DeleteMedicineByID } from 'Redux/actions/medicineAction';
 
 function QRCodeGenerator() {
   const [copiedText, setCopiedText] = useState();
@@ -132,7 +133,7 @@ const [globalFilterValue, setGlobalFilterValue] = useState('');
   const deleteBin = (id)=> {
     // console.log("delete")
 
-    dispatch(DeleteBinByID(id))
+    dispatch(DeleteMedicineByID(id))
     // if(isSuccess){
 
     //   startTimer()
@@ -218,7 +219,7 @@ const actionBodyTemplate = (rowData) => {
   return (
       <React.Fragment>
         <Link
-                          to={`/admin/edit-bin/${rowData?._id}`}
+                          to={`/company/edit-medicine/${rowData?._id}`}
                           >
 
           <Btn icon="pi pi-pencil" rounded outlined className="mr-2"  />
@@ -336,7 +337,7 @@ setselectedItem(rowData?._id)
               onRowClick={
                 (e) => {
 
-                  const url = `/admin/bin-details/${e.data._id}`;
+                  const url = `/company/medicine-details/${e.data._id}`;
   history.push(url);
                 }
               }

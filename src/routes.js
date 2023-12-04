@@ -49,6 +49,8 @@ import quoteRequest from "components/company dashboard/quoteRequest";
 import AppointmentRequest from "components/company dashboard/AppointmentRequest";
 import QRCodeGenerator from "components/company dashboard/QRCodeGenerator";
 import addproduct from "components/company dashboard/addproduct";
+import medicineDetials from "components/company dashboard/medicineDetials";
+import EditMedicine from "components/company dashboard/EditMedicine";
 
 
 var routes = [
@@ -295,6 +297,20 @@ var routes = [
     name: "Add product",
     icon: "ni ni-app text-primary",
     component: addproduct,
+    layout: "/company"
+  },
+  {
+    path: "/medicine-details/:id",
+    name: "Medicine Details",
+    icon: "ni ni-single-02 text-yellow",
+    component: medicineDetials,
+    layout: "/company"
+  },
+  {
+    path: "/edit-medicine/:id",
+    name: "Edit Medicine",
+    icon: "ni ni-planet text-blue",
+    component: EditMedicine,
     layout: "/company"
   },
   // ----------------------------------------------------------------------------------------------------------------
