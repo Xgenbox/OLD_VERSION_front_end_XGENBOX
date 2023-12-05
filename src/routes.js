@@ -58,6 +58,7 @@ import ManageAccesss from "components/Citizen Dashboard/ManageAccesss";
 import Users from "components/Citizen Dashboard/Users";
 import CreateCleaningService from "components/Citizen Dashboard/components/CreateCleaningService";
 import AddAccessCode from "components/Citizen Dashboard/components/AddAccessCode";
+import MapsComponetCiti from "components/Citizen Dashboard/MapsComponetCiti";
 
 
 var routes = [
@@ -257,7 +258,7 @@ var routes = [
     path: "/index",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
-    component: MapsComponent,
+    component: MapsComponetCiti,
     layout: "/citizen"
   },
   {

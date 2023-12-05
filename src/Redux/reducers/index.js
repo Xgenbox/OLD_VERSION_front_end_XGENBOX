@@ -33,6 +33,7 @@ import medicineDetailsReducer from './medicineDetails.reducer';
 import CleaningServicesReducer from './CleaningServicesReducer';
 import AccessListReducers from './AccessListReducers';
 import ListOfUsersSameAccessReducer from './ListOfUsersSameAccess.reducer';
+import ScoreReducer from './ScoreReducer';
 export default combineReducers({
     auth:authReducer,
     error:errorReducer,
@@ -67,5 +68,6 @@ export default combineReducers({
     cleaningService:CleaningServicesReducer,
     accessListUser: AccessListReducers,
     someAccessUsersList : ListOfUsersSameAccessReducer,
+    scores : ScoreReducer,
 
 })

@@ -50,6 +50,7 @@ import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import { GetAllusersWhoHaveAtLeastOneSameAccessCode } from 'Redux/actions/userAction';
+import HeaderCiti from './HeaderCiti';
 
 function Users() {
   const [copiedText, setCopiedText] = useState();
@@ -241,7 +242,7 @@ setselectedItem(rowData?._id)
 };
   return (
     <>
-    <Header />
+    <HeaderCiti />
     {/* Page content */}
     <Container className="mt--7" fluid>
         {/* Table */}

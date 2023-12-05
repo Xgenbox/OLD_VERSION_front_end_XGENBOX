@@ -51,6 +51,7 @@ import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import { findSingleCleaningService } from 'Redux/actions/cleaningServiceAction';
 import { DeleteRequestCleaningService } from 'Redux/actions/cleaningServiceAction';
+import HeaderCiti from './HeaderCiti';
 
 function CleaningService() {
   const [copiedText, setCopiedText] = useState();
@@ -243,7 +244,7 @@ setselectedItem(rowData?._id)
 };
   return (
     <>
-    <Header />
+    <HeaderCiti />
     {/* Page content */}
     <Container className="mt--7" fluid>
         {/* Table */}

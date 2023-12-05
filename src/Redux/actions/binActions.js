@@ -307,13 +307,13 @@ dispatch({
 
     }, 3000);
 
-    navigate.push('/company/QRCodeGenerator');
+    navigate.push('/citizen/index');
 
   })
 
 
   .catch( (err) =>{
-      // console.log(err)
+      console.log(err)
 
          dispatch({
             type: SET_ERRORS,

@@ -119,7 +119,7 @@ const showToastMessageError = () => {
       }
     }, [isSuccess])
     useEffect(() => {
-      if (error.error== "PointBin not found") {
+      if (error.message== "Access denied") {
 
         showToastMessageError()
       }
