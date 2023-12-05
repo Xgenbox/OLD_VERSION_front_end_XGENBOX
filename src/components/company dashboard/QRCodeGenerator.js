@@ -81,6 +81,7 @@ const [globalFilterValue, setGlobalFilterValue] = useState('');
   const cols = [
       { field: '_id', header: 'Id' },
       { field: 'name', header: 'Name' },
+      { field: 'wasteCount', header: 'Waste count' },
 
   ];
 
