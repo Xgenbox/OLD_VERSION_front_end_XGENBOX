@@ -4,8 +4,8 @@ import {  SET_SCORES } from "../types"
 
 const initialState = {
     score: {},
-    
-    
+
+
 }
 
 export default function(state = initialState, action) {
@@ -13,12 +13,12 @@ export default function(state = initialState, action) {
         case SET_SCORES:
             return {
                 ...state,
-               
+
                 score: action.payload,
-                
+
 
             }
-        
+
         default:
             return state
     }
