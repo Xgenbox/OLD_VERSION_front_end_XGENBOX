@@ -2,6 +2,7 @@
 import { SET_ERRORS } from "Redux/types"
 import { SET_IS_LOADING } from "Redux/types"
 import { SET_CURRENT_ACCESS_LIST } from "Redux/types"
+import { SET_SOME_ACCESS_LIST_USERS } from "Redux/types"
 import { SET_IS_SECCESS } from "Redux/types"
 import { SET_USERS_DETAILS } from "Redux/types"
 import { SET_USERS } from "Redux/types"
@@ -194,6 +195,27 @@ export const GetAllUsers = (navigation) => (dispatch) => {
           type:SET_IS_SECCESS,
           payload:true
         })
+        })
+        .catch( (err) =>{
+          // console.log(err)
+        // dispatch({
+        //   type: SET_PROFILES,
+        //   payload: res.data
+
+        // })
+      }
+
+        )
+  }
+  export const GetAllusersWhoHaveAtLeastOneSameAccessCode =() => (dispatch)=>{
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users/access/getAllUserWhoHasASameAccessBin`)
+        .then(async(res) => {
+          // console.log("ligne 6",res.data?.accessList)
+
+          dispatch({
+            type: SET_SOME_ACCESS_LIST_USERS,
+            payload: res.data
+          })
         })
         .catch( (err) =>{
           // console.log(err)

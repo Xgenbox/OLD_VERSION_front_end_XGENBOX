@@ -32,6 +32,7 @@ import fetchMedicineReducer from './fetchMedicine.reducer';
 import medicineDetailsReducer from './medicineDetails.reducer';
 import CleaningServicesReducer from './CleaningServicesReducer';
 import AccessListReducers from './AccessListReducers';
+import ListOfUsersSameAccessReducer from './ListOfUsersSameAccess.reducer';
 export default combineReducers({
     auth:authReducer,
     error:errorReducer,
@@ -65,5 +66,6 @@ export default combineReducers({
     MedicineDetails : medicineDetailsReducer,
     cleaningService:CleaningServicesReducer,
     accessListUser: AccessListReducers,
+    someAccessUsersList : ListOfUsersSameAccessReducer,
 
 })

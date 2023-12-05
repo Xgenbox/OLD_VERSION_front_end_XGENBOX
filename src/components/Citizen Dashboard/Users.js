@@ -49,6 +49,7 @@ import { useHistory } from 'react-router-dom';
 import { FilterMatchMode, FilterOperator } from 'primereact/api';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
+import { GetAllusersWhoHaveAtLeastOneSameAccessCode } from 'Redux/actions/userAction';
 
 function Users() {
   const [copiedText, setCopiedText] = useState();
@@ -65,6 +66,7 @@ function Users() {
   const [products, setProducts] = useState([]);
   const history = useHistory();
   const dt = useRef(null);
+  const ListAccess = useSelector(state=>state?.someAccessUsersList?.SomeAccess)
 const [filters, setFilters] = useState({
   global: { value: null, matchMode: FilterMatchMode.CONTAINS },
   name: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
@@ -78,10 +80,10 @@ const [filters, setFilters] = useState({
 const [globalFilterValue, setGlobalFilterValue] = useState('');
   const cols = [
       { field: '_id', header: 'Id' },
+      { field: 'email', header: 'E-mail' },
       { field: 'name', header: 'Name' },
-      { field: 'address', header: 'Address' },
-      { field: 'gaz', header: 'Gaz' },
-      { field: 'niv', header: 'Level' }
+      { field: 'score.score', header: 'Score' },
+      // { field: 'niv', header: 'Level' }
   ];
 
   const exportColumns = cols.map((col) => ({ title: col.header, dataKey: col.field }));
@@ -96,7 +98,12 @@ const [globalFilterValue, setGlobalFilterValue] = useState('');
     }
   }, [count]);
 
+  useEffect(() => {
+    dispatch(GetAllusersWhoHaveAtLeastOneSameAccessCode())
 
+   }, [ListAccess])
+
+   console.log("List Access", ListAccess)
 
 
   // console.log(ListOfUsers)
@@ -217,7 +224,7 @@ const onGlobalFilterChange = (e) => {
 const actionBodyTemplate = (rowData) => {
   return (
       <React.Fragment>
-        <Link
+        {/* <Link
                           to={`/admin/edit-bin/${rowData?._id}`}
                           >
 
@@ -228,7 +235,7 @@ const actionBodyTemplate = (rowData) => {
 setnotificationModal(true)
 
 setselectedItem(rowData?._id)
-} } />
+} } /> */}
       </React.Fragment>
   );
 };
@@ -247,26 +254,26 @@ setselectedItem(rowData?._id)
                   // lg="6"
                     md="10"
                   >
-                <h3 className="mb-0">List Of all Bins</h3>
+                <h3 className="mb-0">Users who have the same access bin</h3>
 
                   </Col>
                   <Col
                   // lg="6"
                     md="2"
                   >
-                     <Link
+                     {/* <Link
                           to={`/admin/AddBin`}
                           >
                             <Button
                             className="float-right"
-                            // color="primary"
+
                             >
 
 
                 Add bin
                 <i className=" ml-2 fas fa-arrow-right" />
                             </Button>
-                          </Link>
+                          </Link> */}
                   </Col>
                 </Row>
               </CardHeader>
@@ -329,17 +336,17 @@ setselectedItem(rowData?._id)
             <div className="card">
 
               <Tooltip target=".export-buttons>button" position="bottom" />
-              <DataTable paginator rows={5} rowsPerPageOptions={[5, 10, 25]} ref={dt} value={listOfBins} header={header} selection={selectedProduct}
+              <DataTable paginator rows={5} rowsPerPageOptions={[5, 10, 25]} ref={dt} value={ListAccess} header={header} selection={selectedProduct}
               selectionMode={true}
               onSelectionChange={(e) => setSelectedProduct(e.data)}
               filters={filters} filterDisplay="menu" globalFilterFields={['_id','name', 'address', 'gaz', 'niv', 'status']}
-              onRowClick={
-                (e) => {
+  //             onRowClick={
+  //               (e) => {
 
-                  const url = `/admin/bin-details/${e.data._id}`;
-  history.push(url);
-                }
-              }
+  //                 const url = `/admin/bin-details/${e.data._id}`;
+  // history.push(url);
+  //               }
+  //             }
 
 
                sortMode="multiple"className="thead-light" tableStyle={{ minWidth: '50rem' }}>
