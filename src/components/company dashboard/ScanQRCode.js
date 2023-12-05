@@ -82,13 +82,13 @@ console.log(error)
 const showToastMessageError = () => {
   toast.error('Medicine Not found ', {
       position: toast.POSITION.TOP_RIGHT,
-      autoClose: 3000,
+      autoClose: 200,
   });
 }
     const showToastMessage = () => {
       toast.success('Medicine Added to Waste successfully.', {
           position: toast.POSITION.TOP_RIGHT,
-          autoClose: 3000,
+          autoClose: 200,
       });
     }
 
