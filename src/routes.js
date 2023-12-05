@@ -52,6 +52,12 @@ import addproduct from "components/company dashboard/addproduct";
 import medicineDetials from "components/company dashboard/medicineDetials";
 import EditMedicine from "components/company dashboard/EditMedicine";
 import ScanQRCode from "components/company dashboard/ScanQRCode";
+import CleaningService from "components/Citizen Dashboard/CleaningService";
+import ScanQrCode from "components/Citizen Dashboard/ScanQrCode";
+import ManageAccesss from "components/Citizen Dashboard/ManageAccesss";
+import Users from "components/Citizen Dashboard/Users";
+import CreateCleaningService from "components/Citizen Dashboard/components/CreateCleaningService";
+import AddAccessCode from "components/Citizen Dashboard/components/AddAccessCode";
 
 
 var routes = [
@@ -251,7 +257,49 @@ var routes = [
     path: "/index",
     name: "Dashboard",
     icon: "ni ni-tv-2 text-primary",
-    component: ListOfBins,
+    component: MapsComponent,
+    layout: "/citizen"
+  },
+  {
+    path: "/cleaning-service",
+    name: "Cleaning service",
+    icon: "ni ni-tv-2 text-primary",
+    component: CleaningService,
+    layout: "/citizen"
+  },
+  {
+    path: "/user-scan-qrcode",
+    name: "Scan QR Code",
+    icon: "ni ni-tv-2 text-primary",
+    component: ScanQrCode,
+    layout: "/citizen"
+  },
+  {
+    path: "/manage-access",
+    name: "Manage Access",
+    icon: "ni ni-tv-2 text-primary",
+    component: ManageAccesss,
+    layout: "/citizen"
+  },
+  {
+    path: "/users",
+    name: "Users",
+    icon: "ni ni-tv-2 text-primary",
+    component: Users,
+    layout: "/citizen"
+  },
+  {
+    path: "/createCleaningservice",
+    name: "create cleaning service",
+    icon: "ni ni-tv-2 text-primary",
+    component: CreateCleaningService,
+    layout: "/citizen"
+  },
+  {
+    path: "/AddAccesscode",
+    name: "Add access code",
+    icon: "ni ni-tv-2 text-primary",
+    component: AddAccessCode,
     layout: "/citizen"
   },
 

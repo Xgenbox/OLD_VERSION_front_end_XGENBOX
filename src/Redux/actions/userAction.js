@@ -1,6 +1,7 @@
 
 import { SET_ERRORS } from "Redux/types"
 import { SET_IS_LOADING } from "Redux/types"
+import { SET_CURRENT_ACCESS_LIST } from "Redux/types"
 import { SET_IS_SECCESS } from "Redux/types"
 import { SET_USERS_DETAILS } from "Redux/types"
 import { SET_USERS } from "Redux/types"
@@ -179,7 +180,32 @@ export const GetAllUsers = (navigation) => (dispatch) => {
     }
     )
   }
+  export const GetCurrentAccessList =  () => (dispatch) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/api/users/access/getCurrentAccessList`)
+        .then(async(res) => {
+          // console.log("ligne 6",res.data?.accessList)
 
+          dispatch({
+            type: SET_CURRENT_ACCESS_LIST,
+            payload: res.data?.accessList
+          })
+
+        dispatch({
+          type:SET_IS_SECCESS,
+          payload:true
+        })
+        })
+        .catch( (err) =>{
+          // console.log(err)
+        // dispatch({
+        //   type: SET_PROFILES,
+        //   payload: res.data
+
+        // })
+      }
+
+        )
+  }
 
 
 

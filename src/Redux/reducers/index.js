@@ -30,6 +30,8 @@ import fetchBinsReducer from 'Redux/actions/fetchBins.reducer';
 import AllAppointmentsListReducers from './AllAppointmentsList.reducers';
 import fetchMedicineReducer from './fetchMedicine.reducer';
 import medicineDetailsReducer from './medicineDetails.reducer';
+import CleaningServicesReducer from './CleaningServicesReducer';
+import AccessListReducers from './AccessListReducers';
 export default combineReducers({
     auth:authReducer,
     error:errorReducer,
@@ -61,5 +63,7 @@ export default combineReducers({
     Allappointment : AllAppointmentsListReducers,
     AllMedicines : fetchMedicineReducer,
     MedicineDetails : medicineDetailsReducer,
+    cleaningService:CleaningServicesReducer,
+    accessListUser: AccessListReducers,
 
 })
