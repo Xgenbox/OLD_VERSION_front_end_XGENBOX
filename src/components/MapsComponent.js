@@ -175,19 +175,19 @@ function MapsComponent() {
                   // lg="6"
                     md="2"
                   >
-                     <Link
+                     {/* <Link
                           to={`/admin/AddRequest`}
                           >
                             <Button
                             className="float-right"
-                            // color="primary"
+
                             >
 
 
                 Create a Request
                 <i className=" ml-2 fas fa-arrow-right" />
                             </Button>
-                          </Link>
+                          </Link> */}
                   </Col>
                 </Row>
               </CardHeader>
