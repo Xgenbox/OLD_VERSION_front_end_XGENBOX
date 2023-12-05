@@ -47,6 +47,9 @@ import { GetMedicineById } from "Redux/actions/medicineAction";
 import { SET_ERRORS } from "Redux/types";
 import { UpdateMedicine } from "Redux/actions/medicineAction";
 import {QrScanner} from '@yudiel/react-qr-scanner';
+import { AddToWaste } from "Redux/actions/medicineAction";
+import { useHistory } from 'react-router-dom';
+
   const ScanQRCode = () => {
     const { id } = useParams();
     const profile = useSelector(state=>state?.profile?.profile)
@@ -56,8 +59,12 @@ import {QrScanner} from '@yudiel/react-qr-scanner';
   const isLoad = useSelector(state=>state?.isLoading?.isLoading)
     const isSuccess = useSelector(state=>state?.success?.success)
     const dispatch = useDispatch()
+    const navigate = useHistory();
+
     useEffect(() => {
       dispatch(GetMedicineById(id))
+
+
      }, [medicineDetails])
     dispatch({
       type:SET_IS_SECCESS,
@@ -68,13 +75,18 @@ import {QrScanner} from '@yudiel/react-qr-scanner';
 //     payload:{}
 // })
 
+console.log(error)
 
 
 
-
-
+const showToastMessageError = () => {
+  toast.error('Medicine Not found ', {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 3000,
+  });
+}
     const showToastMessage = () => {
-      toast.success('Medicine Updated successfully.', {
+      toast.success('Medicine Added to Waste successfully.', {
           position: toast.POSITION.TOP_RIGHT,
           autoClose: 3000,
       });
@@ -105,6 +117,12 @@ import {QrScanner} from '@yudiel/react-qr-scanner';
         showToastMessage()
       }
     }, [isSuccess])
+    useEffect(() => {
+      if (error) {
+
+        showToastMessageError()
+      }
+    }, [error])
 
     const onSubmit = (e)=>{
 
@@ -161,7 +179,7 @@ import {QrScanner} from '@yudiel/react-qr-scanner';
   }
   >
     <QrScanner
-          onDecode={(result) => console.log(result)}
+          onDecode={(result) => dispatch(AddToWaste(result, navigate)) }
           onError={(error) => console.log(error?.message)}
       />
     <Row>

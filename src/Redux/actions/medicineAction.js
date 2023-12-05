@@ -231,3 +231,65 @@ export const GetAllMedicine = (navigation) => (dispatch) => {
       // Additional error handling or dispatch can be added here if needed.
     }
   };
+
+
+
+export const AddToWaste = (id,navigate) => (dispatch) => {
+  dispatch({
+    type: SET_ERRORS,
+    payload: [],
+  });
+  dispatch({
+    type: SET_IS_LOADING,
+    payload: true,
+  });
+  try {
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/api/users/AddToWaste/${id}`)
+      .then((res) => {
+        // console.log(res)
+        dispatch({
+          type: SET_ERRORS,
+          payload: [],
+        });
+        dispatch({
+          type: SET_IS_LOADING,
+          payload: false,
+        });
+        dispatch({
+          type: SET_IS_SECCESS,
+          payload: true,
+        });
+
+        // console.log(navigate)
+        navigate.push('/company/QRCodeGenerator');
+        setTimeout(() => {
+          dispatch({
+            type: SET_IS_SECCESS,
+            payload: false,
+          });
+        }, 3000);
+
+
+      })
+      .catch((err) => {
+        console.log("err in authAction.js line 366",err)
+        dispatch({
+          type: SET_ERRORS,
+          payload: err?.response?.data,
+        });
+        dispatch({
+          type: SET_IS_SECCESS,
+          payload: false,
+        });
+        dispatch({
+          type: SET_IS_LOADING,
+          payload: false,
+        });
+        // navigate.push('/company/QRCodeGenerator');
+      });
+  } catch (error) {
+    console.error("An error occurred in GetAllUsers action:", error);
+    // You can dispatch an error action or handle the error as needed
+  }
+};
