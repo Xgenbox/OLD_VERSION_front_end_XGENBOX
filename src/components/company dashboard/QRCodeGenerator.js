@@ -112,7 +112,7 @@ const [globalFilterValue, setGlobalFilterValue] = useState('');
     // console.log("render")
 
   }, [ListOfMedicine])
-  console.log(ListOfMedicine)
+  // console.log(ListOfMedicine)
 
 
 

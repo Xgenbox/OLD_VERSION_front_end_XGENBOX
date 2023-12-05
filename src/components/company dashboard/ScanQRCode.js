@@ -75,7 +75,7 @@ import { useHistory } from 'react-router-dom';
 //     payload:{}
 // })
 
-console.log(error)
+// console.log(error)
 
 
 
@@ -118,11 +118,12 @@ const showToastMessageError = () => {
       }
     }, [isSuccess])
     useEffect(() => {
-      if (error) {
+      if (error.error== "Medicine not found") {
 
         showToastMessageError()
       }
     }, [error])
+    console.log(error.error== "Medicine not found")
 
     const onSubmit = (e)=>{
 
@@ -181,6 +182,10 @@ const showToastMessageError = () => {
     <QrScanner
           onDecode={(result) => dispatch(AddToWaste(result, navigate)) }
           onError={(error) => console.log(error?.message)}
+          style={{ width: '100%',
+          height: '100%',
+           }}
+           scanDelay={3000}
       />
     <Row>
       <Col
