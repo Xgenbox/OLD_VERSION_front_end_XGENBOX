@@ -259,7 +259,7 @@ const DemoNavbar = () => {
                       // to={
                       //   "/register-page"
                       // }
-                      to="/register-page"
+                      to="/signupChoice-page"
                       tag={Link}
 
                       id="tooltip333589075"
