@@ -160,10 +160,14 @@ const CitizenSideBar = (props) => {
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img
-                    alt="..."
-                    src={profile?.avatar}
-                  />
+                <img
+                      alt="..."
+                      src={
+                        profile?.avatar ?
+                        profile?.avatar :
+                       'https://www.gravatar.com/avatar/05b6d7cc7c662bf81e01b39254f88a49?d=identicon'
+                      }
+                    />
                 </span>
               </Media>
             </DropdownToggle>

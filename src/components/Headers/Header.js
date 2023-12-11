@@ -23,6 +23,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Card, CardBody, CardTitle, Container, Row, Col } from "reactstrap";
 import StatisticCard from "./components/StatisticCard";
+// Example import statement
+import backgroundImage from "../../assets/514f2ec3798090c6df00dad1592c8166.svg";
 
 
 
@@ -45,14 +47,21 @@ const allUser = userStatistiques?.total
 
   return (
     <>
-      <div className="header bg-gradient-green pb-8 pt-5 pt-md-8 ">
+      <div className="header bg-gradient-reverse-primary pb-8 pt-2 pt-md-7 "
+        style={{
+    minHeight: "300px",
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center top"
+  }}
+      >
         <Container fluid>
           <div className="header-body">
             {/* Card stats */}
             <Row>
             <StatisticCard key={1} icon={"fas fa-trash"} title="Bins count" iconClass="bg-warning" value={BinStatistiques?.totalCount} percentageIncrease={BinStatistiques?.percentageIncrease} />
             <StatisticCard key={2} icon={"fas fa-users"} title="Users Count" iconClass="bg-yellow" value={allUser?.totalCount} percentageIncrease={allUser?.percentageIncrease} />
-            <StatisticCard key={3} icon={"fas fa-truck"} title="MUNICIPALs count" iconClass="bg-info" value={municipal[0]?.totalCount} percentageIncrease={municipal[0]?.percentageIncrease} />
+            <StatisticCard key={3} icon={"fas fa-truck"} title="Urban Count" iconClass="bg-info" value={municipal[0]?.totalCount} percentageIncrease={municipal[0]?.percentageIncrease} />
 
 
             </Row>

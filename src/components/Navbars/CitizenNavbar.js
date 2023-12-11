@@ -56,17 +56,17 @@ const CitizenNavbar = (props) => {
               <DropdownToggle className="pr-0" nav>
                 <Media className="align-items-center">
                   <span className="avatar avatar-sm rounded-circle">
-                    <img
+                  <img
                       alt="..."
                       src={
                         profile?.avatar ?
                         profile?.avatar :
-                        require("assets/img/theme/team-4-800x800.jpg")
+                       'https://www.gravatar.com/avatar/05b6d7cc7c662bf81e01b39254f88a49?d=identicon'
                       }
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
-                    <span className="mb-0 text-sm font-weight-bold">
+                  <span className="mb-0 text-dark font-weight-bold">
                      {user?.name}
                     </span>
                   </Media>

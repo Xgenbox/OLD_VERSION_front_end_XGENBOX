@@ -135,7 +135,7 @@ const Sidebar = (props) => {
               className="navbar-brand-img"
               src={logo.imgSrc}
               style={{ width: '100%', maxHeight: '100%', objectFit: 'contain' }}
-             
+
             />
           </NavbarBrand>
         ) : null}
@@ -160,10 +160,14 @@ const Sidebar = (props) => {
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
-                  <img
-                    alt="..."
-                    src={profile?.avatar}
-                  />
+                <img
+                      alt="..."
+                      src={
+                        profile?.avatar ?
+                        profile?.avatar :
+                       'https://www.gravatar.com/avatar/05b6d7cc7c662bf81e01b39254f88a49?d=identicon'
+                      }
+                    />
                 </span>
               </Media>
             </DropdownToggle>
@@ -252,13 +256,13 @@ const Sidebar = (props) => {
             {/* <NavItem
             onClick={handleLogout}
             >
-              
+
             <i  className="ni ni-user-run ml-2" />
                   <span >Logout</span>
-              
+
             </NavItem> */}
-           
-           
+
+
           </Nav>
           {/* <Nav className="mb-md-3" navbar>
             <NavItem className="active-pro active">
