@@ -314,6 +314,13 @@ var routes = [
     component: MapCollector,
     layout: "/company"
   },
+  // {
+  //   path: "/List-bins",
+  //   name: "List Of Bins",
+  //   icon: "ni ni-folder-17 text-muted",
+  //   component: ListOfBins,
+  //   layout: "/company"
+  // },
   {
     path: "/specific-request",
     name: "Specific request",
@@ -321,13 +328,13 @@ var routes = [
     component: SpecificRequest,
     layout: "/company"
   },
-  {
-    path: "/quote-request",
-    name: "Quote request",
-    icon: "ni ni-align-left-2 text-muted",
-    component: quoteRequest,
-    layout: "/company"
-  },
+  // {
+  //   path: "/quote-request",
+  //   name: "Quote request",
+  //   icon: "ni ni-align-left-2 text-muted",
+  //   component: quoteRequest,
+  //   layout: "/company"
+  // },
   {
     path: "/appointment-request",
     name: "Appointment request",
