@@ -262,6 +262,13 @@ var routes = [
     layout: "/citizen"
   },
   {
+    path: "/user-profile",
+    name: "Profile",
+    icon: "ni ni-single-02 text-muted",
+    component: Profile,
+    layout: "/citizen"
+  },
+  {
     path: "/cleaning-service",
     name: "Cleaning service",
     icon: "ni ni-tv-2 text-muted",
@@ -312,6 +319,13 @@ var routes = [
     name: "Dashboard",
     icon: "ni ni-tv-2 text-muted",
     component: MapCollector,
+    layout: "/company"
+  },
+  {
+    path: "/user-profile",
+    name: "Profile",
+    icon: "ni ni-single-02 text-muted",
+    component: Profile,
     layout: "/company"
   },
   // {

@@ -51,7 +51,9 @@ const Profile = () => {
                       <img
                         alt="..."
                         className="rounded-circle"
-                        src={profile?.avatar}
+                        src={ profile?.avatar ?
+                        profile?.avatar :
+                       'https://www.gravatar.com/avatar/05b6d7cc7c662bf81e01b39254f88a49?d=identicon'}
                       />
                     </a>
                   </div>
@@ -80,7 +82,7 @@ const Profile = () => {
                 </div> */}
               </CardHeader>
               <CardBody className="pt-0 pt-md-4">
-                
+
                 <div className="text-center mt-md-5">
                   <h3>
                   {user?.name}
@@ -123,7 +125,7 @@ const Profile = () => {
                       onClick={(e) => e.preventDefault()}
                       size="sm"
                     >
-                      Settings
+                      Edit Profile
                     </Button>
                   </Col>
                 </Row>
