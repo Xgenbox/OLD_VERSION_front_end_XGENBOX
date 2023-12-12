@@ -44,7 +44,6 @@ import { FilterMatchMode, FilterOperator } from 'primereact/api';
 
 import { InputText } from 'primereact/inputtext';
 import { toast } from "react-toastify";
-// import HeaderCiti from "./HeaderCiti";
 // --------------------------------------
 function MapCollector() {
   const [currentLocation, setCurrentLocation] = useState([36.7496,10.2126]);
@@ -215,7 +214,7 @@ function MapCollector() {
   });
   const [globalFilterValue, setGlobalFilterValue] = useState('');
     const cols = [
-        { field: '_id', header: 'Id' },
+        // { field: '_id', header: 'Id' },
         { field: 'name', header: 'Name' },
         { field: 'address', header: 'Address' },
         { field: 'gaz', header: 'Gaz' },
@@ -382,7 +381,6 @@ useEffect(() => {
 
   return (
     <>
-    {/* <HeaderCiti /> */}
     <Header />
     {/* Page content */}
     <Container className="mt--7" fluid>
