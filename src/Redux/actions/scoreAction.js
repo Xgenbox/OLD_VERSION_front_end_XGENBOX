@@ -8,7 +8,7 @@ import {SET_SCORES} from '../types'
 
 
 export const AddScore =  (userData, navigation ) => (dispatch) => {
-    // console.log(userData)
+    // //(userData)
   //   dispatch({
   //     type:SET_IS_LOADING,
   //     payload:true
@@ -24,7 +24,7 @@ export const AddScore =  (userData, navigation ) => (dispatch) => {
           //       type: SET_ERRORS,
           //       payload: {}
           //   })
-          //   // console.log(res)
+          //   // //(res)
 
           //   dispatch({
           //     type:SET_IS_LOADING,
@@ -48,7 +48,7 @@ export const AddScore =  (userData, navigation ) => (dispatch) => {
 
 
         .catch( (err) =>{
-            // console.log(err)
+            // //(err)
             // setTimeout(() => {
             //     // Make API call or other asynchronous operation
 
@@ -77,7 +77,7 @@ export const AddScore =  (userData, navigation ) => (dispatch) => {
 export const fetchScore =  () => (dispatch) => {
   axios.get(`${process.env.REACT_APP_API_URL}/api/score/findScore`)
       .then(async(res) => {
-        // console.log("ligne 51",res.data)
+        // //("ligne 51",res.data)
 
         dispatch({
           type: SET_SCORES,
@@ -85,7 +85,7 @@ export const fetchScore =  () => (dispatch) => {
         })
       })
       .catch( (err) =>{
-        // console.log(err)
+        // //(err)
       // dispatch({
       //   type: SET_PROFILES,
       //   payload: res.data
@@ -110,7 +110,7 @@ export const CreateScore =  (userData, navigation ) => (dispatch) => {
 
 
       .catch( (err) =>{
-          // console.log(err)
+          // //(err)
           }
 
 

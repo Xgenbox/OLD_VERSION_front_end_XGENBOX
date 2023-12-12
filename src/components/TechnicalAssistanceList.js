@@ -83,7 +83,7 @@ function TechnicalAssistanceList() {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'name', header: 'User' },
       { field: 'email', header: 'E-mail' },
       { field: 'tel', header: 'Tel' },

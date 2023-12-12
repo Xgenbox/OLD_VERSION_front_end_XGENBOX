@@ -61,7 +61,7 @@ function RequestsMunicpal() {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'municipal', header: 'Municipal' },
       { field: 'governorat', header: 'Governorate' },
       { field: 'description', header: 'Description' },

@@ -9,7 +9,7 @@ import { SET_DEMANDES_MUNICIPAL, SET_ERRORS, SET_IS_LOADING, SET_IS_SECCESS, SET
 export const findDemandeInProgress = ( navigation)=> (dispatch) => {
   axios.get(`${process.env.REACT_APP_API_URL}/api/demande-municipal/findDemandeInProgress`)
   .then(async(res) => {
-    // console.log(">>>>>>>>>>>>>>>>>>>",res.data)
+    // //(">>>>>>>>>>>>>>>>>>>",res.data)
     dispatch({
       type: SET_DEMANDES_MUNICIPAL,
       payload: res.data,
@@ -35,13 +35,13 @@ export const findDemandeInProgress = ( navigation)=> (dispatch) => {
 
 
 export const FinishCleaningRequest = (data, navigation)=> (dispatch) => {
-  // console.log(data)
+  // //(data)
   axios.put(`${process.env.REACT_APP_API_URL}/api/cleaning/AcceptCleaningRequestMunicipal/${data}`
 
   )
   .then(async(res) => {
-    // console.log(res.data)
-    // console.log(">>>>>>>>>>>>>>>>>>> ligne 41: ",res.data?.data?.user)
+    // //(res.data)
+    // //(">>>>>>>>>>>>>>>>>>> ligne 41: ",res.data?.data?.user)
     // dispatch({
     //   type: SET_DEMANDES_MUNICIPAL,
     //   payload: res.data,
@@ -67,10 +67,10 @@ export const FinishCleaningRequest = (data, navigation)=> (dispatch) => {
 }
 
 export const findSingleCleaningService =  () => (dispatch) => {
-  // console.log("send requset")
+  // //("send requset")
   axios.get(`${process.env.REACT_APP_API_URL}/api/cleaning/findSingleCleaningService`)
       .then(async(res) => {
-        // console.log("demande action:",res.data)
+        // //("demande action:",res.data)
         dispatch({
           type: SET_REQUESTS_SENT,
           payload: res.data
@@ -88,10 +88,10 @@ export const findSingleCleaningService =  () => (dispatch) => {
       )
 }
 export const findDemandeInProgressMunicipal =  () => (dispatch) => {
-  // console.log("send requset")
+  // //("send requset")
   axios.get(`${process.env.REACT_APP_API_URL}/api/cleaning/findDemandeInProgressMunicipal`)
       .then(async(res) => {
-        // console.log("demande action:",res.data)
+        // //("demande action:",res.data)
         dispatch({
           type: SET_REQUESTS_CLEANING,
           payload: res.data
@@ -111,10 +111,10 @@ export const findDemandeInProgressMunicipal =  () => (dispatch) => {
 
 
 export const DeleteRequestCleaningService =  (data) => (dispatch) => {
-  // console.log("send requset")
+  // //("send requset")
   axios.delete(`${process.env.REACT_APP_API_URL}/api/cleaning/delete/${data.requestId}`)
       .then(async(res) => {
-        // console.log("delete action:",res.data)
+        // //("delete action:",res.data)
 
       })
       .catch( (err) =>{
@@ -146,7 +146,7 @@ dispatch({
 
   })
       .then(async(res) => {
-        // console.log(res)
+        // //(res)
 
         dispatch({
           type:SET_IS_LOADING,
@@ -166,7 +166,7 @@ dispatch({
       }, 5000);
       })
       .catch( (err) =>{
-        console.log(err)
+        //(err)
 
         dispatch({
           type: SET_ERRORS,

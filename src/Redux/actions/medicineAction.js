@@ -68,14 +68,14 @@ export const GetAllMedicine = (navigation) => (dispatch) => {
       axios
         .get(`${process.env.REACT_APP_API_URL}/api/users/fetchMedicineByUserId`)
         .then((res) => {
-          // console.log(res)
+          // //(res)
           dispatch({
             type: SET_ALL_MEDICINE,
             payload: res?.data,
           });
         })
         .catch((err) => {
-          // console.log("err in authAction.js line 366",err)
+          // //("err in authAction.js line 366",err)
           dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data,
@@ -93,14 +93,14 @@ export const GetAllMedicine = (navigation) => (dispatch) => {
       axios
         .get(`${process.env.REACT_APP_API_URL}/api/users/fetchMedicineByid/${id}`)
         .then((res) => {
-          // console.log(res)
+          // //(res)
           dispatch({
             type: SET_DETAILS_MEDICINE,
             payload: res?.data,
           });
         })
         .catch((err) => {
-          // console.log("err in authAction.js line 366",err)
+          // //("err in authAction.js line 366",err)
           dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data,
@@ -125,7 +125,7 @@ export const GetAllMedicine = (navigation) => (dispatch) => {
     data
     )
     .then(res => {
-        // console.log(res)
+        // //(res)
 
         dispatch({
             type: SET_ERRORS,
@@ -155,7 +155,7 @@ export const GetAllMedicine = (navigation) => (dispatch) => {
     })
     .catch(err =>
        {
-        // console.log("err in authAction.js line 366",err)
+        // //("err in authAction.js line 366",err)
         dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data
@@ -247,7 +247,7 @@ export const AddToWaste = (id,navigate) => (dispatch) => {
     axios
       .post(`${process.env.REACT_APP_API_URL}/api/users/AddToWaste/${id}`)
       .then((res) => {
-        // console.log(res)
+        // //(res)
         dispatch({
           type: SET_ERRORS,
           payload: [],
@@ -261,7 +261,7 @@ export const AddToWaste = (id,navigate) => (dispatch) => {
           payload: true,
         });
 
-        // console.log(navigate)
+        // //(navigate)
         navigate.push('/company/QRCodeGenerator');
         setTimeout(() => {
           dispatch({
@@ -273,7 +273,7 @@ export const AddToWaste = (id,navigate) => (dispatch) => {
 
       })
       .catch((err) => {
-        console.log("err in authAction.js line 366",err)
+        //("err in authAction.js line 366",err)
         dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data,

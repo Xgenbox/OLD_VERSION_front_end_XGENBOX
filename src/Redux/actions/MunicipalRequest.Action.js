@@ -10,7 +10,7 @@ export const findDemandeInProgress = (navigation) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/demande-municipal/findDemandeInProgress`);
 
-      console.log(res);
+      //(res);
 
       dispatch({
           type: SET_DEMANDES_MUNICIPAL,
@@ -20,7 +20,7 @@ export const findDemandeInProgress = (navigation) => async (dispatch) => {
       // You can add more dispatch or navigation logic here if needed.
 
   } catch (err) {
-      // console.log("err in authAction.js line 366",err)
+      // //("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -33,7 +33,7 @@ export const findDemandeInProgress = (navigation) => async (dispatch) => {
 
 export const UpadeteRequest = (data, navigation) => async (dispatch) => {
   try {
-      // console.log(data);
+      // //(data);
       dispatch({
           type: SET_ERRORS,
           payload: []

@@ -11,7 +11,7 @@ import axios from "axios"
 
 export const createQuote = (data) => async (dispatch) => {
   try {
-      console.log(data);
+      //(data);
 
       dispatch({
           type: SET_ERRORS,
@@ -52,7 +52,7 @@ export const createQuote = (data) => async (dispatch) => {
       // Additional logic or dispatch actions if needed after a successful response
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -70,7 +70,7 @@ export const FetchAllQuote = (data) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/quote/fetchAll`, data);
 
-      // console.log(res)
+      // //(res)
 
       dispatch({
           type: SET_QUOTE,
@@ -80,7 +80,7 @@ export const FetchAllQuote = (data) => async (dispatch) => {
       // Additional logic or dispatch actions if needed after a successful response
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -98,7 +98,7 @@ export const GetQuoteById = (id, navigation) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/quote/fetchByID/${id}`);
 
-      // console.log(res)
+      // //(res)
       dispatch({
           type: SET_QUOTE_DETAILS,
           payload: res?.data
@@ -107,7 +107,7 @@ export const GetQuoteById = (id, navigation) => async (dispatch) => {
       // Additional logic or dispatch actions if needed after a successful response
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -158,7 +158,7 @@ export const UpdateQuoteStatus = (id, navigation) => async (dispatch) => {
       // Additional logic or dispatch actions if needed after a successful response
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_IS_LOADING,
           payload: false
@@ -222,7 +222,7 @@ export const UpdateQuoteStat = (id, status, navigation) => async (dispatch) => {
       // Additional logic or dispatch actions if needed after a successful response
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_IS_LOADING,
           payload: false

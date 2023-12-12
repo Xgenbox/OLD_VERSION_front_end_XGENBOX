@@ -74,7 +74,7 @@ const [filters, setFilters] = useState({
 // eslint-disable-next-line react-hooks/rules-of-hooks
 const [globalFilterValue, setGlobalFilterValue] = useState('');
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'name', header: 'Name' },
       { field: 'address', header: 'Address' },
       { field: 'gaz', header: 'Gaz' },

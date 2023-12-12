@@ -25,7 +25,7 @@ import ForceRedirect from "components/ForceRedirect.js";
 import DemoNavbar from "components/Navbars/DemoNavbar.js";
 import NoAccess from "components/NoAccess.js";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import jwt_decode from 'jwt-decode';
 import { LogOut } from "Redux/actions/authActions.js";
 import { SetAuthToken } from "utils/SetAuthToken.js";
@@ -44,6 +44,7 @@ import ForgotPassword from "views/examples/ForgotPassword.js";
 import SignUpChoice from "views/examples/SignUpChoice.js";
 import CollectorSignUp from "views/examples/CollectorSignUp.js";
 import CompanySignUp from "views/examples/CompanySignUp.js";
+import { ErrorBoundary } from "react-error-boundary";
 // import 'primeflex/primeflex.css';
 function App() {
   // const user= {
@@ -128,6 +129,9 @@ function App() {
 
   return (
     <BrowserRouter>
+     <React.StrictMode>
+     {/* <ErrorBoundary fallback={<div>Something went wrong</div>}> */}
+
     {/* <DemoNavbar/> */}
     <Switch>
            <Route  path="/admin"   render={(props) =>
@@ -197,6 +201,7 @@ function App() {
            {/* <FooterComponent/> */}
            <Redirect  to="/" />
     </Switch>
+    </React.StrictMode>
   </BrowserRouter>
   );
 }

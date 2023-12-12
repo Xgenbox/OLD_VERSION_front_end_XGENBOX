@@ -80,7 +80,7 @@ const [filters, setFilters] = useState({
 });
 const [globalFilterValue, setGlobalFilterValue] = useState('');
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'code', header: 'Code' },
       { field: 'address', header: 'Address' },
     //   { field: 'gaz', header: 'Gaz' },
@@ -118,7 +118,7 @@ const [globalFilterValue, setGlobalFilterValue] = useState('');
     //   setModalVisible(false)
     // }
   }, [Access])
-  console.log("Access",Access)
+  // console.log("Access",Access)
 
   useEffect(() => {
     dispatch(FetchAllBins())

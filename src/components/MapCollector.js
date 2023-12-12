@@ -214,7 +214,7 @@ function MapCollector() {
   });
   const [globalFilterValue, setGlobalFilterValue] = useState('');
     const cols = [
-        { field: '_id', header: 'Id' },
+        // { field: '_id', header: 'Id' },
         { field: 'name', header: 'Name' },
         { field: 'address', header: 'Address' },
         { field: 'gaz', header: 'Gaz' },

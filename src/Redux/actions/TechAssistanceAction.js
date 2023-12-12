@@ -11,7 +11,7 @@ import axios from "axios"
 
 export const createTechAssist = (data) => async (dispatch) => {
   try {
-      console.log(data);
+      //(data);
       dispatch({
           type: SET_ERRORS,
           payload: []
@@ -25,7 +25,7 @@ export const createTechAssist = (data) => async (dispatch) => {
           headers: { "Content-Type": "multipart/form-data" }
       });
 
-      console.log(res);
+      //(res);
       dispatch({
           type: SET_ERRORS,
           payload: []
@@ -49,7 +49,7 @@ export const createTechAssist = (data) => async (dispatch) => {
       }, 3000);
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -65,7 +65,7 @@ export const createTechAssist = (data) => async (dispatch) => {
 export const FetchAllTechAssist = (data) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/TechAssist/fetchAll`, data);
-      console.log(res);
+      //(res);
 
       dispatch({
           type: SET_TECH_ASSIST,
@@ -73,7 +73,7 @@ export const FetchAllTechAssist = (data) => async (dispatch) => {
       });
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -90,14 +90,14 @@ export const FetchAllTechAssist = (data) => async (dispatch) => {
 export const GetTechAssistDetailsById = (id, navigation) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/techAssist/fetchByID/${id}`);
-      // console.log(res);
+      // //(res);
       dispatch({
           type: SET_TECH_ASSIST_DETAILS,
           payload: res?.data
       });
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -145,7 +145,7 @@ export const UpdateTechAssistStatus = (id, navigation) => async (dispatch) => {
       }, 3000);
   } catch (err) {
       // Handle errors
-      // console.log("err in authAction.js line 366", err);
+      // //("err in authAction.js line 366", err);
       dispatch({
           type: SET_IS_LOADING,
           payload: false

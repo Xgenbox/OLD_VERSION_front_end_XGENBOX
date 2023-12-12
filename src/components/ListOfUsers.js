@@ -81,7 +81,7 @@ function ListOfUsers() {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'address', header: 'Address' },
       { field: 'tel', header: 'Tel' },
       { field: 'city', header: 'City ' },

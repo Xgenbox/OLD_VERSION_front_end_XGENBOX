@@ -22,7 +22,7 @@ export const CreateContactUs = (data) => async (dispatch) => {
 
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/site/AddContactUs`, data);
 
-      console.log(res);
+      //(res);
 
       dispatch({
           type: SET_ERRORS,
@@ -49,7 +49,7 @@ export const CreateContactUs = (data) => async (dispatch) => {
       // dispatch(registerGoogleUser(data))
       // dispatch(loginUser(data))
   } catch (err) {
-      // console.log("err in authAction.js line 366",err)
+      // //("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -74,7 +74,7 @@ export const FetchAllContact = (data) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/contactUs/fetchAll`, data);
 
-      console.log(res);
+      //(res);
 
       dispatch({
           type: SET_CONTACT_LIST,
@@ -84,7 +84,7 @@ export const FetchAllContact = (data) => async (dispatch) => {
       // dispatch(registerGoogleUser(data))
       // dispatch(loginUser(data))
   } catch (err) {
-      // console.log("err in authAction.js line 366",err)
+      // //("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -104,7 +104,7 @@ export const GetContactUsById = (id, navigation) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/contactUs/fetchByID/${id}`);
 
-      // console.log(res)
+      // //(res)
       dispatch({
           type: SET_CONTACT_DETAIL,
           payload: res?.data
@@ -113,7 +113,7 @@ export const GetContactUsById = (id, navigation) => async (dispatch) => {
       // dispatch(registerGoogleUser(data))
       // dispatch(loginUser(data))
   } catch (err) {
-      // console.log("err in authAction.js line 366",err)
+      // //("err in authAction.js line 366",err)
       dispatch({
           type: SET_ERRORS,
           payload: err?.response?.data
@@ -161,7 +161,7 @@ export const UpdateContactStatus = (id, navigation) => async (dispatch) => {
           });
       }, 3000);
   } catch (err) {
-      // console.log("err in authAction.js line 366",err)
+      // //("err in authAction.js line 366",err)
       dispatch({
           type: SET_IS_LOADING,
           payload: false

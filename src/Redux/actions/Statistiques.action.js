@@ -55,7 +55,7 @@ export const getUsersCounts = (navigation) => (dispatch) => {
         // dispatch(someOtherAction(res.data.someValue));
     } catch (err) {
         // Handle errors
-        // console.log("err in authAction.js line 366", err);
+        // //("err in authAction.js line 366", err);
         // dispatch({
         //     type: SET_ERRORS,
         //     payload: err?.response?.data

@@ -80,7 +80,7 @@ const [filters, setFilters] = useState({
 });
 const [globalFilterValue, setGlobalFilterValue] = useState('');
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'email', header: 'E-mail' },
       { field: 'name', header: 'Name' },
       { field: 'score.score', header: 'Score' },

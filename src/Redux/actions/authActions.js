@@ -118,7 +118,7 @@ export const getUserByEmail = (info, navigation) => async (dispatch) => {
         // dispatch(registerGoogleUser(data))
         // dispatch(loginUser(data))
     } catch (err) {
-        // console.log("err in authAction.js line 366",err)
+        // ("err in authAction.js line 366",err)
         // Handle error if needed
         // dispatch({
         //     type: SET_ERRORS,
@@ -206,7 +206,7 @@ export const registerUser = (userData, history) => async (dispatch) => {
 
 export const registerCollectorUser = (userData, history) => async (dispatch) => {
     try {
-        console.log("action", userData);
+        //("action", userData);
 
         dispatch({
             type: SET_ERRORS,
@@ -274,7 +274,7 @@ export const registerCollectorUser = (userData, history) => async (dispatch) => 
             dispatch(setLoading(true));
         }, 1000);
     } catch (err) {
-        console.log(err);
+        //(err);
 
         dispatch({
             type: SET_ERRORS,
@@ -303,7 +303,7 @@ export const registerCollectorUser = (userData, history) => async (dispatch) => 
 
 export const AddCollector = (userData, navigation) => async (dispatch) => {
     try {
-        console.log("action", userData);
+        //("action", userData);
 
         dispatch({
             type: SET_ERRORS,
@@ -351,7 +351,7 @@ export const AddCollector = (userData, navigation) => async (dispatch) => {
         }, 1000);
         // navigation.navigate('OTPVerifyEmail', {email:res?.data?.user?.email, userId:res?.data?.user?._id})
     } catch (err) {
-        console.log(err);
+        //(err);
 
         dispatch({
             type: SET_ERRORS,
@@ -380,7 +380,7 @@ export const AddCollector = (userData, navigation) => async (dispatch) => {
 
 export const registerEntrepriseUser = (userData, history) => async (dispatch) => {
     try {
-        console.log("action", userData);
+        //("action", userData);
 
         dispatch({
             type: SET_ERRORS,
@@ -450,7 +450,7 @@ export const registerEntrepriseUser = (userData, history) => async (dispatch) =>
             history.push('/login');
         }, 1000);
     } catch (err) {
-        console.log(err);
+        //(err);
 
         dispatch({
             type: SET_ERRORS,
@@ -478,7 +478,7 @@ export const registerEntrepriseUser = (userData, history) => async (dispatch) =>
 
 export const AddEntreprise = (userData, navigation) => async (dispatch) => {
     try {
-        console.log("action", userData);
+        // //("action", userData);
 
         dispatch({
             type: SET_ERRORS,
@@ -527,7 +527,7 @@ export const AddEntreprise = (userData, navigation) => async (dispatch) => {
 
         // navigation.navigate('OTPVerifyEmail', {email:res?.data?.user?.email, userId:res?.data?.user?._id})
     } catch (err) {
-        console.log(err);
+        //(err);
 
         dispatch({
             type: SET_ERRORS,
@@ -556,7 +556,7 @@ export const AddEntreprise = (userData, navigation) => async (dispatch) => {
 
 export const forgotPassword = (email) => async (dispatch) => {
     try {
-        // console.log("-------------------------------------",email)
+        // //("-------------------------------------",email)
         dispatch({
             type: SET_ERRORS,
             payload: {}

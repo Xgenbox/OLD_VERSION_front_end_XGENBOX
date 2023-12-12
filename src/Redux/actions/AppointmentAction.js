@@ -3,7 +3,7 @@ import { SET_ALL_APPOINTMENT, SET_APPOINTMENT, SET_ERRORS, SET_IS_LOADING, SET_I
 import { setLoading } from "./authActions"
 
 export const createAppointment =  (userData, navigation ) => (dispatch) => {
-    console.log("action",userData)
+    // console.log("action",userData)
 
     dispatch({
         type: SET_ERRORS,
@@ -55,7 +55,7 @@ export const createAppointment =  (userData, navigation ) => (dispatch) => {
 
 
         .catch( (err) =>{
-            console.log(err)
+            // console.log(err)
                dispatch({
                   type: SET_ERRORS,
                   payload: err?.response?.data

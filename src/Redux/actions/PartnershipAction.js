@@ -21,7 +21,7 @@ export const CreatePartership = (data) => async (dispatch) => {
 
       const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/site/Addpartnership`, data);
 
-      console.log(res);
+      //(res);
 
       dispatch({
           type: SET_ERRORS,
@@ -68,7 +68,7 @@ export const FetchAllPartnership = (data) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/partnerShip/fetchAll`, data);
 
-      console.log(res);
+      //(res);
 
       dispatch({
           type: SET_PARTNERSHIP_LIST,
@@ -102,7 +102,7 @@ export const GetPartnerDetailsById = (id, navigation) => async (dispatch) => {
   try {
       const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/site/partnerShip/fetchByID/${id}`);
 
-      // console.log(res)
+      // //(res)
       dispatch({
           type: SET_PARTNER_DETAILS,
           payload: res?.data

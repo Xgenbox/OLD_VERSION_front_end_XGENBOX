@@ -10,7 +10,7 @@ import { AddScore } from './scoreAction';
 
 
 export const createAccess =  (userData, navigation ) => (dispatch) => {
-    // console.log(userData)
+    // //(userData)
     dispatch({
       type:SET_IS_LOADING,
       payload:true
@@ -28,7 +28,7 @@ export const createAccess =  (userData, navigation ) => (dispatch) => {
                 type: SET_ERRORS,
                 payload: {}
             })
-            // console.log(res)
+            // //(res)
 
 
 
@@ -51,7 +51,7 @@ export const createAccess =  (userData, navigation ) => (dispatch) => {
 
 
         .catch( (err) =>{
-            // console.log(err)
+            // //(err)
             setTimeout(() => {
                 // Make API call or other asynchronous operation
 
@@ -79,7 +79,7 @@ export const createAccess =  (userData, navigation ) => (dispatch) => {
 export const GetCurrentAccess =  () => (dispatch) => {
   axios.get(`${process.env.REACT_APP_API_URL}/api/access/currentAccess`)
       .then(async(res) => {
-        // console.log("ligne 51",res.data)
+        // //("ligne 51",res.data)
 
         dispatch({
           type: SET_CURRENT_ACCESS,
@@ -87,7 +87,7 @@ export const GetCurrentAccess =  () => (dispatch) => {
         })
       })
       .catch( (err) =>{
-        // console.log(err)
+        // //(err)
       // dispatch({
       //   type: SET_PROFILES,
       //   payload: res.data
@@ -101,7 +101,7 @@ export const GetCurrentAccess =  () => (dispatch) => {
 export const getAllBins = ()=>(dispatch)=> {
   axios.get(`${process.env.REACT_APP_API_URL}/api/bin/getAllBins`)
   .then(async(res) => {
-    // console.log("ligne 51",res.data)
+    // //("ligne 51",res.data)
 
     dispatch({
       type: SET_ALL_BINS,
@@ -110,7 +110,7 @@ export const getAllBins = ()=>(dispatch)=> {
   }
   )
   .catch( (err) =>{
-    // console.log(err)
+    // //(err)
   // dispatch({
 
   //   type: SET_PROFILES,
@@ -122,7 +122,7 @@ export const getAllBins = ()=>(dispatch)=> {
 
 export const addAccessCode = (code)=>(dispatch)=> {
 
-  // console.log("ligne 92",code)
+  // //("ligne 92",code)
   dispatch({
     type: SET_ERRORS,
     payload: []
@@ -146,12 +146,12 @@ dispatch({
                 type: SET_ERRORS,
                 payload: {}
             })
-            // console.log(res)
+            // //(res)
             dispatch({
               type: SET_ERRORS,
               payload: {}
           })
-          // console.log(res)
+          // //(res)
 
           dispatch({
             type: SET_ERRORS,
@@ -203,7 +203,7 @@ dispatch({
 
 
         .catch( (err) =>{
-            // console.log(err)
+            // //(err)
             dispatch({
               type: SET_ERRORS,
               payload: err?.response?.data
@@ -267,7 +267,7 @@ dispatch({
           type: SET_ERRORS,
           payload: {}
       })
-      // console.log(res)
+      // //(res)
 
       dispatch({
         type: SET_ERRORS,
@@ -313,7 +313,7 @@ dispatch({
 
 
   .catch( (err) =>{
-      console.log(err)
+      //(err)
 
          dispatch({
             type: SET_ERRORS,
@@ -365,7 +365,7 @@ export const fetchBins = ()=>dispatch=> {
         type: SET_BINS,
         payload: res.data
       })
-      // console.log(res)
+      // //(res)
 
 
   })
@@ -396,7 +396,7 @@ export const fetchBins1 = ()=>dispatch=> {
         type: SET_BINS,
         payload: res.data
       })
-      // console.log(res)
+      // //(res)
 
 
   })
@@ -460,7 +460,7 @@ export const fetchBinByMunicipal = (municipal)=>(dispatch)=> {
 
   axios.get(`${process.env.REACT_APP_API_URL}/api/bin/FetchBinsNotInPointBinByMunicipal/${municipal}`)
   .then(async(res) => {
-    // console.log(res.data)
+    // //(res.data)
 
     dispatch({
       type: SET_BINS_BY_MUNICIPAL,

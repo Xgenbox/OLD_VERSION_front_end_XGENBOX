@@ -84,7 +84,7 @@ function PartnershipList() {
   const [globalFilterValue, setGlobalFilterValue] = useState('');
   const [selectedProduct, setSelectedProduct] = useState(null);
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'email', header: 'E-Mail' },
       { field: 'tel', header: 'Tel' },
       { field: 'city', header: 'City' },

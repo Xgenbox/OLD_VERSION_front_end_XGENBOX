@@ -49,12 +49,12 @@ const StatisticCard = ({ title, iconClass, value, percentageIncrease, icon, gift
       </CardBody>
     </Card>
   </Col> :
-  <Col lg="4" xl="4">
+  <Col lg="6" xl="6">
 
 
       {/* <Row> */}
         <Skeleton
-          width={`${(4 / 4) * 100}%`} // Set the width based on the Col size (6 columns out of 12)
+          width={`${(6 / 6) * 100}%`} // Set the width based on the Col size (6 columns out of 12)
           height={100}
           baseColor="#FAFAFA"
           highlightColor="#4444"

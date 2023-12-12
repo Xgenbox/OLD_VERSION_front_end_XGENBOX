@@ -14,14 +14,14 @@ export const GetAllUsers = (navigation) => (dispatch) => {
       axios
         .get(`${process.env.REACT_APP_API_URL}/api/users/getUsers`)
         .then((res) => {
-          // console.log(res)
+          // //(res)
           dispatch({
             type: SET_USERS,
             payload: res?.data,
           });
         })
         .catch((err) => {
-          // console.log("err in authAction.js line 366",err)
+          // //("err in authAction.js line 366",err)
           dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data,
@@ -39,14 +39,14 @@ export const GetAllUsers = (navigation) => (dispatch) => {
       axios
         .get(`${process.env.REACT_APP_API_URL}/api/users/${id}`)
         .then((res) => {
-          // console.log(res)
+          // //(res)
           dispatch({
             type: SET_USERS_DETAILS,
             payload: res?.data,
           });
         })
         .catch((err) => {
-          // console.log("err in authAction.js line 366",err)
+          // //("err in authAction.js line 366",err)
           dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data,
@@ -71,7 +71,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
     })
     axios.put(`${process.env.REACT_APP_API_URL}/api/users/block/${id}`)
     .then(res => {
-        // console.log(res)
+        // //(res)
 
         dispatch({
             type: SET_ERRORS,
@@ -101,7 +101,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
     })
     .catch(err =>
        {
-        // console.log("err in authAction.js line 366",err)
+        // //("err in authAction.js line 366",err)
         dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data
@@ -133,7 +133,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
     })
     axios.put(`${process.env.REACT_APP_API_URL}/api/users/deblock/${id}`)
     .then(res => {
-        console.log(res)
+        //(res)
 
 
         dispatch({
@@ -163,7 +163,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
     })
     .catch(err =>
        {
-        // console.log("err in authAction.js line 366",err)
+        // //("err in authAction.js line 366",err)
         dispatch({
             type: SET_ERRORS,
             payload: err?.response?.data
@@ -184,7 +184,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
   export const GetCurrentAccessList =  () => (dispatch) => {
     axios.get(`${process.env.REACT_APP_API_URL}/api/users/access/getCurrentAccessList`)
         .then(async(res) => {
-          // console.log("ligne 6",res.data?.accessList)
+          // //("ligne 6",res.data?.accessList)
 
           dispatch({
             type: SET_CURRENT_ACCESS_LIST,
@@ -197,7 +197,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
         })
         })
         .catch( (err) =>{
-          // console.log(err)
+          // //(err)
         // dispatch({
         //   type: SET_PROFILES,
         //   payload: res.data
@@ -210,7 +210,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
   export const GetAllusersWhoHaveAtLeastOneSameAccessCode =() => (dispatch)=>{
     axios.get(`${process.env.REACT_APP_API_URL}/api/users/access/getAllUserWhoHasASameAccessBin`)
         .then(async(res) => {
-          // console.log("ligne 6",res.data?.accessList)
+          // //("ligne 6",res.data?.accessList)
 
           dispatch({
             type: SET_SOME_ACCESS_LIST_USERS,
@@ -218,7 +218,7 @@ export const GetAllUsers = (navigation) => (dispatch) => {
           })
         })
         .catch( (err) =>{
-          // console.log(err)
+          // //(err)
         // dispatch({
         //   type: SET_PROFILES,
         //   payload: res.data

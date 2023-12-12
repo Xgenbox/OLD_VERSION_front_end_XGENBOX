@@ -86,7 +86,7 @@ const [filters, setFilters] = useState({
 });
 const [globalFilterValue, setGlobalFilterValue] = useState('');
   const cols = [
-      { field: '_id', header: 'Id' },
+      // { field: '_id', header: 'Id' },
       { field: 'AdminAccept', header: 'status' },
       { field: 'description', header: 'Description' },
       { field: 'createdAt', header: 'created at' },
